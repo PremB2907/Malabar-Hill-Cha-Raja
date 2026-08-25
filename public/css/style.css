@@ -3172,6 +3172,7 @@ html[data-lang="en"] [data-lang-only="en"] { display: inline !important; }
 .hero-img-2 { object-position: 50% 35%; }
 .hero-img-3 { object-position: 50% 32%; }
 .crazy-reel-card .card-img-box img, .magazine-img-frame img { object-position: center 30%; }
+.gallery-archive-reel, .gallery-archive-strip { display: none; }
 .crazy-reel-card .card-img-box img, .magazine-img-frame img { object-position: center 30%; }
 
 /* Final mobile lockup override. */

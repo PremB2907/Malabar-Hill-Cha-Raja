@@ -393,14 +393,19 @@ module.exports = {
   renderGlimpsesPage(req, res) {
     const galleryFiles = (folder, url) => fs.readdirSync(path.join(__dirname, '..', folder))
       .filter(file => /\.(jpe?g|png|webp)$/i.test(file))
-      .map(file => ({ file, url: `${url}/${encodeURIComponent(file)}` }));
+      .map(file => ({
+        file,
+        url: `${url}/${encodeURIComponent(file)}`,
+        date: (file.match(/2026-\d{2}-\d{2}/) || [])[0] || null
+      }));
+    const bappaGallery = galleryFiles('Bappa Pics', '/gallery/bappa').map(photo => ({ ...photo, category: 'bappa', title: 'Bappa Darshan' }));
+    const celebrityGallery = galleryFiles('Celebrities', '/gallery/celebrities').map(photo => ({ ...photo, category: 'celebrities', title: 'Celebrity Visit' }));
     res.render('glimpses', {
       title: 'वर्षभरातील क्षणचित्रे | Malabar Hill Cha Raja',
       activeTab: 'glimpses',
-      glimpsesData,
-      celebrityGallery: '/gallery/celebrities',
-      bappaGallery: galleryFiles('Bappa Pics', '/gallery/bappa'),
-      celebrityGallery: galleryFiles('Celebrities', '/gallery/celebrities')
+      archiveData: [...bappaGallery, ...celebrityGallery],
+      celebrityGallery,
+      bappaGallery
     });
   },
 
