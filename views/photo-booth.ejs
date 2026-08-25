@@ -1,0 +1,108 @@
+<%- include('partials/header') %>
+
+<section class="page-hero-banner">
+  <div class="container">
+    <span class="section-badge" data-i18n="decade_tag">
+      १० वर्षांचा सुवर्ण प्रवास
+    </span>
+    <h1 data-i18n="decade_title">दशकातील स्वर्णिम क्षणचित्रे (२०१५ - २०२५)</h1>
+    <p data-i18n="decade_sub">
+      गेल्या १० वर्षांतील राजाची राजेशाही रूपे, काष्ठ व सुवर्ण सिहांसन आणि अथांग भक्तीचा ऐतिहासिक लेखाजोखा.
+    </p>
+  </div>
+</section>
+
+<!-- Featured 3D Interactive Scroll Reel Section -->
+<section style="background: linear-gradient(180deg, #160303 0%, #0A0A0A 100%); padding: 3.5rem 0 2.5rem; border-bottom: 2px solid var(--royal-gold); position: relative; overflow: hidden;">
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+      <h2 style="font-size: 1.6rem; color: var(--gold-soft); margin: 0; display: flex; align-items: center; gap: 10px;">
+        <i class="fa-solid fa-crown" style="color: var(--royal-gold);"></i>
+        <span data-i18n="glimpses_tag">ऐतिहासिक सुवर्ण क्षण (3D Reel Scroll View)</span>
+      </h2>
+      <span style="font-size: 0.85rem; color: var(--gold-soft); font-weight: 600; opacity: 0.85;">
+        <i class="fa-solid fa-hand-pointer" style="margin-right: 4px;"></i> Drag or Scroll 3D Cards →
+      </span>
+    </div>
+
+    <div class="crazy-reel-wrapper">
+      <button class="crazy-reel-nav-btn prev" aria-label="Previous Slide">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      
+      <div class="crazy-reel-container">
+        <% glimpsesData.forEach(item => { %>
+          <div class="crazy-reel-card gold-motion-frame" data-lightbox data-lightbox-src="<%= item.image %>" data-lightbox-title="<%= item.title %> (वर्ष <%= item.year %>)" data-lightbox-caption="<%= item.desc %>">
+            <div class="card-img-box">
+              <img src="<%= item.image %>" alt="<%= item.title %>" loading="lazy">
+              <div class="year-badge">वर्ष <%= item.year %></div>
+              <div class="enlarge-hint">
+                <i class="fa-solid fa-magnifying-glass-plus" style="color: var(--royal-gold); margin-right: 4px;"></i>
+                <span data-i18n="btn_enlarge">झूम करा</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h4 class="card-title"><%= item.title %></h4>
+              <p class="card-subtitle"><%= item.theme %></p>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+
+      <button class="crazy-reel-nav-btn next" aria-label="Next Slide">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Decade Historical Grid Section -->
+<section style="background: var(--bg-cream); padding: 4rem 0;">
+  <div class="container">
+    
+    <!-- Gallery Category Filter Pills -->
+    <div class="gallery-filter-bar">
+      <button class="filter-pill active" data-filter="all" data-i18n="filter_all">सर्व वर्षे</button>
+      <button class="filter-pill" data-filter="idols" data-i18n="filter_idols">मूर्ती व सिंहासन</button>
+      <button class="filter-pill" data-filter="visarjan" data-i18n="filter_visarjan">विसर्जन मिरवणूक</button>
+      <button class="filter-pill" data-filter="decor" data-i18n="filter_decor">मंडप शृंगार</button>
+      <button class="filter-pill" data-filter="aarti" data-i18n="filter_aarti">महाआरती व भक्ती</button>
+    </div>
+
+    <!-- 10-Year Retrospective Cards -->
+    <div class="grid-3">
+      <% glimpsesData.forEach(item => { %>
+        <div class="card-temple gallery-card-item gold-motion-frame" data-category="<%= item.category %>" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="position: relative; height: 360px; overflow: hidden; background: #0A0A0A; cursor: pointer;" data-lightbox data-lightbox-src="<%= item.image %>" data-lightbox-title="<%= item.title %> (वर्ष <%= item.year %>)" data-lightbox-caption="<%= item.desc %>">
+            <img src="<%= item.image %>" alt="<%= item.title %>" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+            <div style="position: absolute; top: 14px; right: 14px; background: var(--temple-maroon); color: var(--gold-soft); font-weight: 800; font-size: 0.9rem; padding: 6px 16px; border-radius: var(--radius-full); border: 1.5px solid var(--royal-gold); box-shadow: var(--shadow-sm);">
+              वर्ष <%= item.year %>
+            </div>
+            <div style="position: absolute; bottom: 14px; left: 14px; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); color: #FFF; font-size: 0.78rem; padding: 4px 12px; border-radius: 4px; border-left: 3px solid var(--royal-gold);">
+              <i class="fa-solid fa-magnifying-glass-plus" style="margin-right: 4px; color: var(--royal-gold);"></i> <span data-i18n="btn_enlarge">चित्र मोठे करून पहा</span>
+            </div>
+          </div>
+
+          <div style="padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.3rem; color: var(--temple-maroon); margin-bottom: 0.6rem;"><%= item.title %></h3>
+              <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.2rem;"><%= item.desc %></p>
+            </div>
+            
+            <div style="border-top: 1px dashed var(--border-gold); padding-top: 1rem;">
+              <div style="font-size: 0.85rem; color: var(--primary-saffron); font-weight: 700; margin-bottom: 0.3rem;">
+                <span data-i18n="label_height">मूर्तीची उंची</span>: <%= item.height %> | <span data-i18n="label_theme">संकल्पना</span>: <%= item.theme %>
+              </div>
+              <div style="font-size: 0.85rem; color: var(--text-main); font-weight: 700;">
+                <span data-i18n="label_sculptor">मूर्तिकार</span>: <%= item.artist %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+

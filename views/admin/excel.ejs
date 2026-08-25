@@ -1,0 +1,162 @@
+<%- include('../partials/header') %>
+
+<section style="background:var(--bg-cream);padding:4rem 0;min-height:75vh;">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;">
+      <div>
+        <span class="section-badge">मंडळ कार्यकारिणी डेस्क</span>
+        <h1 style="color:var(--temple-maroon);margin:.3rem 0;">Excel & Offline Records</h1>
+        <p style="color:var(--text-muted);margin:0;">Upload committee Excel files and keep offline donations and T-shirt bookings alongside online records.</p>
+      </div>
+      <a href="/admin" class="btn btn-outline">← Dashboard</a>
+    </div>
+
+    <% if (query.success) { %>
+      <div style="background:#D1FAE5;border:1px solid #6EE7B7;color:#065F46;padding:1rem;border-radius:8px;margin-bottom:1.5rem;"><%= query.success %></div>
+    <% } %>
+    <% if (query.error) { %>
+      <div style="background:#FEE2E2;border:1px solid #FCA5A5;color:#991B1B;padding:1rem;border-radius:8px;margin-bottom:1.5rem;"><%= query.error %></div>
+    <% } %>
+
+    <div class="grid-3" style="margin-bottom:2rem;">
+      <div class="card-temple" style="padding:1.4rem;text-align:center;">
+        <div style="color:var(--primary-saffron);font-weight:800;">UPLOADED SHEETS</div>
+        <div style="font-size:2rem;font-weight:800;color:var(--temple-maroon);"><%= sheets.length %></div>
+      </div>
+      <div class="card-temple" style="padding:1.4rem;text-align:center;">
+        <div style="color:var(--primary-saffron);font-weight:800;">DONATION SHEETS</div>
+        <div style="font-size:2rem;font-weight:800;color:var(--temple-maroon);"><%= sheets.filter(s => s.record_type === 'donation').length %></div>
+      </div>
+      <div class="card-temple" style="padding:1.4rem;text-align:center;">
+        <div style="color:var(--primary-saffron);font-weight:800;">T-SHIRT SHEETS</div>
+        <div style="font-size:2rem;font-weight:800;color:var(--temple-maroon);"><%= sheets.filter(s => s.record_type === 'tshirt').length %></div>
+      </div>
+    </div>
+
+    <div class="card-temple" style="padding:2rem;margin-bottom:2rem;">
+      <h2 style="color:var(--temple-maroon);margin-top:0;">Upload Committee Excel</h2>
+      <p style="color:var(--text-muted);">Your committee can use <strong>any column names</strong>. Extra columns are preserved automatically.</p>
+
+      <form action="/admin/excel/upload" method="POST" enctype="multipart/form-data">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
+          <div>
+            <label style="font-weight:700;display:block;margin-bottom:.4rem;">Record Type *</label>
+            <select name="record_type" required style="width:100%;padding:.75rem;border:1px solid var(--border-gold);border-radius:8px;">
+              <option value="donation">Offline Donations</option>
+              <option value="tshirt">Offline T-Shirt Bookings</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-weight:700;display:block;margin-bottom:.4rem;">Sheet Name</label>
+            <input type="text" name="sheet_name" placeholder="e.g. July Offline Donations" style="width:100%;padding:.75rem;border:1px solid var(--border-gold);border-radius:8px;">
+          </div>
+          <div>
+            <label style="font-weight:700;display:block;margin-bottom:.4rem;">Excel File *</label>
+            <input type="file" name="excel_file" accept=".xlsx,.xls" required style="width:100%;padding:.62rem;border:1px solid var(--border-gold);border-radius:8px;background:#fff;">
+          </div>
+        </div>
+        <div style="margin-top:1.2rem;padding:1rem;background:#FFF8E7;border-radius:8px;font-size:.9rem;line-height:1.6;">
+          <strong>Excel format:</strong> Row 1 must contain column headings. Every following row is one record.<br>
+          <strong>Donation amount:</strong> columns such as Amount, Donation Amount, Total, Paid Amount are detected automatically.<br>
+          <strong>T-Shirt quantity:</strong> Quantity, Qty, Count etc. are detected automatically. All other columns remain available in the records.
+        </div>
+        <button class="btn btn-primary" type="submit" style="margin-top:1rem;"><i class="fa-solid fa-upload"></i> Upload Excel</button>
+      </form>
+    </div>
+
+    <div class="card-temple" style="padding:2rem;margin-bottom:2rem;">
+      <h2 style="color:var(--temple-maroon);margin-top:0;">Online Records</h2>
+      <p style="color:var(--text-muted);">These are the records generated directly through the website.</p>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;min-width:760px;">
+          <thead><tr style="background:var(--temple-maroon);color:var(--gold-soft);">
+            <th style="padding:10px;text-align:left;">Type</th><th style="padding:10px;text-align:left;">Receipt</th><th style="padding:10px;text-align:left;">Name</th><th style="padding:10px;text-align:left;">Phone</th><th style="padding:10px;text-align:left;">Amount</th><th style="padding:10px;text-align:left;">Quantity</th>
+          </tr></thead>
+          <tbody>
+            <% onlineDonations.forEach(d => { %><tr style="border-bottom:1px solid var(--border-subtle);"><td style="padding:9px;">Donation</td><td style="padding:9px;"><%= d.receipt_no %></td><td style="padding:9px;"><%= d.donor_name %></td><td style="padding:9px;"><%= d.phone %></td><td style="padding:9px;font-weight:700;">₹ <%= (parseFloat(d.amount)||0).toLocaleString('en-IN') %></td><td style="padding:9px;">—</td></tr><% }) %>
+            <% onlineTshirtOrders.forEach(o => { %><tr style="border-bottom:1px solid var(--border-subtle);"><td style="padding:9px;">T-Shirt</td><td style="padding:9px;"><%= o.receipt_no %></td><td style="padding:9px;"><%= o.buyer_name %></td><td style="padding:9px;"><%= o.phone %></td><td style="padding:9px;font-weight:700;">₹ <%= (parseFloat(o.total_amount)||0).toLocaleString('en-IN') %></td><td style="padding:9px;"><%= o.quantity %></td></tr><% }) %>
+            <% if (!onlineDonations.length && !onlineTshirtOrders.length) { %><tr><td colspan="6" style="padding:1.5rem;text-align:center;color:var(--text-muted);">No online records.</td></tr><% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card-temple" style="padding:2rem;margin-bottom:2rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div>
+          <h2 style="color:var(--temple-maroon);margin:0;">Uploaded Committee Sheets</h2>
+          <p style="color:var(--text-muted);margin:.4rem 0 0;">Open a sheet to see every original column and row.</p>
+        </div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
+          <a href="/admin/excel/export?type=donation" class="btn btn-outline">Export Donations</a>
+          <a href="/admin/excel/export?type=tshirt" class="btn btn-outline">Export T-Shirts</a>
+          <a href="/admin/excel/export-combined" class="btn btn-primary">Export Combined</a>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto;margin-top:1.2rem;">
+        <table style="width:100%;border-collapse:collapse;min-width:760px;">
+          <thead><tr style="background:var(--temple-maroon);color:var(--gold-soft);">
+            <th style="padding:10px;text-align:left;">Sheet</th>
+            <th style="padding:10px;text-align:left;">Type</th>
+            <th style="padding:10px;text-align:left;">File</th>
+            <th style="padding:10px;text-align:left;">Columns</th>
+            <th style="padding:10px;text-align:left;">Uploaded</th>
+            <th style="padding:10px;text-align:left;">Actions</th>
+          </tr></thead>
+          <tbody>
+          <% if (!sheets.length) { %>
+            <tr><td colspan="6" style="padding:1.5rem;text-align:center;color:var(--text-muted);">No Excel sheets uploaded yet.</td></tr>
+          <% } %>
+          <% sheets.forEach(sheet => { %>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:10px;font-weight:700;"><%= sheet.sheet_name %></td>
+              <td style="padding:10px;"><%= sheet.record_type === 'donation' ? 'Donation' : 'T-Shirt' %></td>
+              <td style="padding:10px;"><%= sheet.original_filename %></td>
+              <td style="padding:10px;"><%= (sheet.columns || []).length %></td>
+              <td style="padding:10px;"><%= sheet.uploaded_at ? new Date(sheet.uploaded_at).toLocaleString('en-IN') : '' %></td>
+              <td style="padding:10px;white-space:nowrap;">
+                <a href="/admin/excel?sheet=<%= sheet.id %>" class="btn btn-outline" style="padding:4px 9px;font-size:.8rem;">View</a>
+                <form action="/admin/excel/delete/<%= sheet.id %>" method="POST" style="display:inline;" onsubmit="return confirm('Delete this uploaded Excel sheet and its records?');">
+                  <button type="submit" class="btn btn-outline" style="padding:4px 9px;font-size:.8rem;">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <% if (selectedSheet) { %>
+      <div class="card-temple" style="padding:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <div>
+            <h2 style="color:var(--temple-maroon);margin:0;"><%= selectedSheet.sheet_name %></h2>
+            <p style="color:var(--text-muted);margin:.4rem 0 0;"><%= selectedSheet.record_type === 'donation' ? 'Offline Donations' : 'Offline T-Shirt Bookings' %> · <%= selectedRows.length %> records · <%= selectedSheet.columns.length %> columns</p>
+          </div>
+          <a href="/admin/excel/export?type=<%= selectedSheet.record_type %>" class="btn btn-outline">Export Type</a>
+        </div>
+
+        <div style="overflow:auto;margin-top:1.2rem;max-height:650px;">
+          <table style="width:100%;border-collapse:collapse;min-width:max-content;">
+            <thead><tr style="background:var(--temple-maroon);color:var(--gold-soft);">
+              <th style="padding:9px;position:sticky;top:0;background:var(--temple-maroon);">Row</th>
+              <% selectedSheet.columns.forEach(column => { %><th style="padding:9px;position:sticky;top:0;background:var(--temple-maroon);"><%= column %></th><% }) %>
+            </tr></thead>
+            <tbody>
+            <% selectedRows.forEach(row => { %>
+              <tr style="border-bottom:1px solid var(--border-subtle);">
+                <td style="padding:8px;font-weight:700;"><%= row.row_number %></td>
+                <% selectedSheet.columns.forEach(column => { %><td style="padding:8px;"><%= row.data[column] ?? '' %></td><% }) %>
+              </tr>
+            <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

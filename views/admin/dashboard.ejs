@@ -1,0 +1,262 @@
+<%- include('../partials/header') %>
+
+  <section style="background: var(--bg-cream); padding: 4rem 0;">
+    <div class="container">
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="section-badge">मंंडळ कार्यकारिणी डेस्क</span>
+          <h1 style="font-size: 2.2rem; color: var(--temple-maroon); margin: 0;">ॲडमिन कंट्रोल पॅनेल</h1>
+        </div>
+        <div style="display: flex; gap: 0.8rem; align-items: center;">
+          <a href="/admin/logout" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.88rem;">
+            <i class="fa-solid fa-right-from-bracket"></i> लॉगआउट (Logout)
+          </a>
+        </div>
+      </div>
+
+      <!-- Alert Notices -->
+      <% if (typeof query.broadcast_success !=='undefined' ) { %>
+        <div
+          style="background: #D1FAE5; border: 1px solid #6EE7B7; color: #065F46; padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
+          <i class="bi bi-check-circle-fill"></i>
+          <%= query.broadcast_success %>
+        </div>
+        <% } %>
+
+          <!-- Executive Metrics Grid -->
+
+          <div class="grid-3" style="margin-bottom:3rem;">
+
+            <!-- TOTAL DONATIONS -->
+
+            <div class="card-temple" style="text-align:center;">
+
+              <div style="
+      font-size:.85rem;
+      font-weight:800;
+      color:var(--primary-saffron);
+      text-transform:uppercase;
+    ">
+                एकूण देणगी
+              </div>
+
+              <div style="
+      font-size:2.2rem;
+      font-weight:800;
+      color:var(--temple-maroon);
+      margin:.5rem 0;
+    ">
+
+                ₹
+                <%= (combinedDonationTotal || 0).toLocaleString('en-IN') %>
+
+              </div>
+
+              <span style="
+      font-size:.82rem;
+      color:var(--text-muted);
+    ">
+
+                Online ₹
+                <%= (totalDonations || 0).toLocaleString('en-IN') %>
+
+                  ·
+
+                  Offline ₹
+                  <%= (offlineDonationTotal || 0).toLocaleString('en-IN') %>
+
+              </span>
+
+            </div>
+
+
+            <!-- T-SHIRT BOOKINGS -->
+
+            <div class="card-temple" style="text-align:center;">
+
+              <div style="
+      font-size:.85rem;
+      font-weight:800;
+      color:var(--primary-saffron);
+      text-transform:uppercase;
+    ">
+                T-Shirt Bookings
+              </div>
+
+              <div style="
+      font-size:2.2rem;
+      font-weight:800;
+      color:var(--temple-maroon);
+      margin:.5rem 0;
+    ">
+
+                <%= tshirtOrders.length + offlineTshirtOrders.length %>
+
+              </div>
+
+              <span style="
+      font-size:.82rem;
+      color:var(--text-muted);
+    ">
+
+                Online
+                <%= tshirtOrders.length %>
+
+                  ·
+
+                  Offline
+                  <%= offlineTshirtOrders.length %>
+
+              </span>
+
+            </div>
+
+
+            <!-- T-SHIRT REVENUE -->
+
+            <div class="card-temple" style="text-align:center;">
+
+              <div style="
+      font-size:.85rem;
+      font-weight:800;
+      color:var(--primary-saffron);
+      text-transform:uppercase;
+    ">
+                T-Shirt Revenue
+              </div>
+
+              <div style="
+      font-size:2.2rem;
+      font-weight:800;
+      color:var(--temple-maroon);
+      margin:.5rem 0;
+    ">
+
+                ₹
+                <%= (combinedTshirtTotal || 0).toLocaleString('en-IN') %>
+
+              </div>
+
+              <span style="
+      font-size:.82rem;
+      color:var(--text-muted);
+    ">
+
+                Online ₹
+                <%= (onlineTshirtTotal || 0).toLocaleString('en-IN') %>
+
+                  ·
+
+                  Offline ₹
+                  <%= (offlineTshirtTotal || 0).toLocaleString('en-IN') %>
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- EXCEL MANAGEMENT -->
+
+          <div class="card-temple" style="
+    margin-bottom:3rem;
+    padding:1.5rem;
+  ">
+
+            <div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+    flex-wrap:wrap;
+  ">
+
+              <div>
+
+                <h3 style="
+        color:var(--temple-maroon);
+        margin:0;
+      ">
+                  Excel & Offline Records
+                </h3>
+
+                <p style="
+        margin:.4rem 0 0;
+        color:var(--text-muted);
+        font-size:.9rem;
+      ">
+                  Upload committee Excel sheets,
+                  view online/offline records and
+                  export combined data.
+                </p>
+
+              </div>
+
+              <a href="/admin/excel" class="btn btn-primary">
+
+                <i class="fa-solid fa-file-excel"></i>
+
+                Manage Excel & Records
+
+              </a>
+
+            </div>
+
+          </div>
+
+          <!-- Donations Table -->
+          <div class="card-temple" style="margin-bottom: 3rem; padding: 2rem;">
+            <h3 style="font-size: 1.4rem; color: var(--temple-maroon); margin-bottom: 1.2rem;">
+              प्राप्त ऑनलाइन देणगी नोंदी (80G Receipts)
+            </h3>
+
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+                <thead>
+                  <tr style="background: var(--temple-maroon); color: var(--gold-soft);">
+                    <th style="padding: 10px 14px;">पावती क्र.</th>
+                    <th style="padding: 10px 14px;">देणगीदाराचे नाव</th>
+                    <th style="padding: 10px 14px;">मोबाईल</th>
+                    <th style="padding: 10px 14px;">रक्कम (₹)</th>
+                    <th style="padding: 10px 14px;">पॅन कार्ड (80G)</th>
+                    <th style="padding: 10px 14px;">पावती डाऊनलोड</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% donations.forEach(d=> { %>
+                    <tr style="border-bottom: 1px solid var(--border-subtle);">
+                      <td style="padding: 10px 14px; font-weight: 700; font-family: monospace;">
+                        <%= d.receipt_no %>
+                      </td>
+                      <td style="padding: 10px 14px;"><strong>
+                          <%= d.donor_name %>
+                        </strong></td>
+                      <td style="padding: 10px 14px;">
+                        <%= d.phone %>
+                      </td>
+                      <td style="padding: 10px 14px; font-weight: 800; color: var(--temple-maroon);">₹ <%=
+                          parseFloat(d.amount).toLocaleString('en-IN') %>
+                      </td>
+                      <td style="padding: 10px 14px;">
+                        <%= d.pan_number || 'N/A' %>
+                      </td>
+                      <td style="padding: 10px 14px;">
+                        <a href="/download-receipt/<%= d.receipt_no %>" class="btn btn-outline"
+                          style="padding: 2px 10px; font-size: 0.8rem;">
+                          Donor PDF
+                        </a>
+                        <a href="/admin/download-receipt/<%= d.receipt_no %>" class="btn btn-outline" style="padding: 2px 10px; font-size: 0.8rem;">Admin PDF</a>
+                      </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+    </div>
+  </section>
+
+  <%- include('../partials/footer') %>

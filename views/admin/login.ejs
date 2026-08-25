@@ -1,0 +1,45 @@
+<%- include('../partials/header') %>
+
+<section style="background: var(--bg-cream); padding: 5rem 0; min-height: 70vh; display: flex; align-items: center;">
+  <div class="container" style="max-width: 520px;">
+    
+    <div style="background: var(--bg-white); border-radius: var(--radius-lg); border: 2px solid var(--royal-gold); padding: 2.5rem; box-shadow: var(--shadow-md);">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div style="margin: 0 auto 1rem; width: 64px; height: 64px; border-radius: var(--radius-full); background: var(--temple-maroon); color: var(--gold-soft); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border: 2px solid var(--royal-gold);">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h2 style="font-size: 1.6rem; color: var(--temple-maroon); margin-bottom: 0.3rem;">मंडळ ॲडमिन डेस्क लॉगिन</h2>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">श्री बाल गोपाल गणेशोत्सव मंडळ</p>
+      </div>
+
+      <% if (typeof error !== 'undefined' && error) { %>
+        <div style="background: #FEE2E2; border: 1px solid #FCA5A5; color: #991B1B; padding: 0.8rem; border-radius: 8px; font-size: 0.9rem; margin-bottom: 1.5rem; text-align: center;">
+          <i class="bi bi-exclamation-triangle-fill"></i> <%= error %>
+        </div>
+      <% } %>
+
+      <form action="/admin/login" method="POST">
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);" for="username">युझरनेम (Username) *</label>
+          <input type="text" id="username" name="username" required value="<%= typeof username !== 'undefined' ? username : 'admin' %>" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+        </div>
+
+        <div style="margin-bottom: 1.8rem;">
+          <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);" for="password">पासवर्ड (Password) *</label>
+          <input type="password" id="password" name="password" required value="admin123" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.9rem; font-size: 1.05rem;">
+          लॉगिन करा <i class="fa-solid fa-right-to-bracket"></i>
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border-subtle); font-size: 0.82rem; color: var(--text-muted); text-align: center;">
+        <span>डेमो लॉगिन: युझरनेम: <strong>admin</strong> | पासवर्ड: <strong>admin123</strong></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

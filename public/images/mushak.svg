@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" width="100%" height="100%">
+  <!-- Definitions for gradients -->
+  <defs>
+    <!-- Gold Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE259" />
+      <stop offset="100%" stop-color="#FFA751" />
+    </linearGradient>
+    <!-- Body Gray Gradient -->
+    <linearGradient id="greyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9E9E9E" />
+      <stop offset="100%" stop-color="#757575" />
+    </linearGradient>
+  </defs>
+
+  <!-- TAIL -->
+  <path d="M 68 175 C 28 175, 0 145, 10 100 C 15 80, 42 70, 38 95 C 34 115, 15 125, 26 148 C 32 160, 52 170, 68 172" 
+        fill="none" stroke="#888888" stroke-width="7" stroke-linecap="round" />
+
+  <!-- LEFT LEG (Back running leg) -->
+  <path d="M 72 180 C 60 190, 42 200, 38 215 C 35 225, 45 235, 52 230 C 60 222, 65 210, 80 198" 
+        fill="#888888" stroke="#757575" stroke-width="1" />
+  <!-- Left Foot pink pad -->
+  <path d="M 39 217 C 37 222, 43 228, 48 226 C 50 220, 44 215, 39 217" fill="#FFAAA6" />
+
+  <!-- RIGHT LEG (Front stepping leg) -->
+  <path d="M 125 180 C 145 190, 165 192, 185 198 C 195 200, 202 210, 195 218 C 185 224, 172 215, 160 205 Q 140 190 120 185" 
+        fill="#888888" stroke="#757575" stroke-width="1" />
+
+  <!-- BODY (Chubby) -->
+  <path d="M 72 175 Q 60 130 90 98 Q 115 110 135 130 Q 155 160 138 185 Q 105 195 72 175 Z" 
+        fill="#888888" stroke="#757575" stroke-width="1" />
+
+  <!-- PINK BELLY -->
+  <path d="M 100 120 Q 115 122 125 135 C 135 150, 130 180, 115 188 C 105 190, 96 175, 102 155 Q 106 135 100 120 Z" 
+        fill="#FFAAA6" />
+
+  <!-- HEAD -->
+  <path d="M 98 90 C 85 75, 95 45, 125 45 C 155 45, 175 60, 185 75 C 195 85, 192 100, 175 105 C 150 110, 110 105, 98 90 Z" 
+        fill="#888888" stroke="#757575" stroke-width="1" />
+
+  <!-- BACK EAR -->
+  <circle cx="120" cy="38" r="28" fill="#757575" />
+  <circle cx="122" cy="40" r="20" fill="#FFAAA6" />
+
+  <!-- FRONT EAR -->
+  <circle cx="75" cy="55" r="35" fill="#888888" stroke="#757575" stroke-width="1" />
+  <circle cx="75" cy="55" r="25" fill="#FFAAA6" />
+
+  <!-- MOUTH (Happy Open Smile) -->
+  <path d="M 142 82 Q 165 100 178 82 Q 170 76 155 76 Q 148 76 142 82 Z" fill="#5D4037" />
+  <!-- Tongue -->
+  <path d="M 152 90 Q 160 96 168 90 Q 160 84 152 90 Z" fill="#FF8A80" />
+
+  <!-- CUTE CLOSED EYE -->
+  <path d="M 132 58 Q 142 48 152 58" fill="none" stroke="#212121" stroke-width="4.5" stroke-linecap="round" />
+  
+  <!-- EYEBROW -->
+  <path d="M 128 44 Q 138 36 145 42" fill="none" stroke="#212121" stroke-width="3" stroke-linecap="round" />
+
+  <!-- PINK CHEEK -->
+  <ellipse cx="128" cy="74" rx="10" ry="7" fill="#FFAAA6" />
+
+  <!-- NOSE -->
+  <circle cx="190" cy="72" r="8" fill="#3E2723" />
+  <ellipse cx="188" cy="70" rx="3" ry="2" fill="#FFFFFF" />
+
+  <!-- LEFT ARM -->
+  <path d="M 115 130 C 130 135, 155 145, 162 140 C 168 135, 160 128, 145 125 Q 128 120 115 130" 
+        fill="#888888" />
+
+  <!-- GREEN LEAF CUP -->
+  <path d="M 150 148 C 160 162, 195 160, 215 145 C 225 130, 235 100, 218 108 C 205 115, 195 128, 172 128 C 165 128, 158 135, 150 148 Z" 
+        fill="#4CAF50" stroke="#388E3C" stroke-width="1.5" />
+  <path d="M 165 152 C 180 158, 205 140, 222 110" fill="none" stroke="#388E3C" stroke-width="1.5" />
+
+  <!-- MODAK -->
+  <path d="M 160 132 C 160 120, 165 105, 178 95 C 182 92, 188 92, 192 95 C 205 105, 210 120, 210 132 C 210 142, 198 148, 185 148 C 172 148, 160 142, 160 132 Z" 
+        fill="#FFE082" stroke="#FFB300" stroke-width="1.5" />
+  <!-- Modak folds -->
+  <path d="M 172 146 Q 180 125 185 96" fill="none" stroke="#FFB300" stroke-width="1.2" />
+  <path d="M 185 148 Q 185 125 185 96" fill="none" stroke="#FFB300" stroke-width="1.2" />
+  <path d="M 198 146 Q 190 125 185 96" fill="none" stroke="#FFB300" stroke-width="1.2" />
+
+  <!-- RIGHT ARM / PAW holding the modak/leaf -->
+  <path d="M 148 118 C 158 122, 168 128, 175 132 C 178 134, 180 140, 175 142 C 170 145, 162 138, 155 132" 
+        fill="#888888" />
+
+  <!-- ROYAL ELEMENTS FOR THE WEBSITE VIBE -->
+  <!-- 1. Auspicious Red Tilak on Forehead -->
+  <path d="M 152 52 Q 153 43 154 52" fill="none" stroke="#D32F2F" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="153.5" cy="38" r="1.5" fill="url(#goldGrad)" />
+
+  <!-- 2. Traditional Golden Crown (Mukut) -->
+  <path d="M 88 38 L 94 28 L 99 33 L 104 25 L 109 33 L 114 28 L 120 38 Z" fill="url(#goldGrad)" stroke="#C9A227" stroke-width="1" />
+  <circle cx="104" cy="30" r="3.5" fill="#D32F2F" />
+  <circle cx="104" cy="30" r="1.5" fill="#FFEB3B" />
+
+  <!-- 3. Golden Anklet (Payal) on front stepping leg -->
+  <path d="M 172 208 Q 180 213 188 208" fill="none" stroke="url(#goldGrad)" stroke-width="3.5" stroke-linecap="round" />
+
+  <!-- 4. Golden Anklet (Payal) on back running leg -->
+  <path d="M 44 219 Q 50 223 56 219" fill="none" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round" />
+</svg>
