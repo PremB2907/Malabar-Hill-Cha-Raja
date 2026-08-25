@@ -124,6 +124,13 @@
       <!-- Navigation Links -->
       <nav class="main-nav" id="mainNav">
         <ul>
+          <!-- Mobile Language Switcher -->
+          <li class="mobile-lang-item">
+            <div class="lang-switcher-container">
+              <button class="lang-btn <%= typeof lang !== 'undefined' && lang === 'mr' ? 'active' : '' %>" data-lang="mr">मराठी</button>
+              <button class="lang-btn <%= typeof lang === 'undefined' || lang === 'en' ? 'active' : '' %>" data-lang="en">English</button>
+            </div>
+          </li>
           <li>
             <button class="btn btn-outline nav-live-btn" id="btnLiveDarshanModal">
               <i class="fa-solid fa-tower-broadcast" style="color: var(--primary-saffron);"></i> <span data-i18n="nav_live">LIVE DARSHAN</span>

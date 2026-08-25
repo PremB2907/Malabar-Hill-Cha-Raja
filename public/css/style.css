@@ -3230,3 +3230,46 @@ html[data-lang="en"] [data-lang-only="en"] { display: inline !important; }
   .brand-text h2 { font-size: 1.05rem; }
   .brand-text p { font-size: .62rem; }
 }
+
+/* Mobile Language Switcher inside Nav Menu */
+.mobile-lang-item {
+  display: none !important; /* Hidden on desktop */
+}
+
+@media (max-width: 1220px) {
+  .mobile-lang-item {
+    display: flex !important;
+    justify-content: center;
+    padding: 0.8rem 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(133, 6, 27, 0.15);
+    margin-bottom: 0.5rem;
+  }
+  
+  .mobile-lang-item .lang-switcher-container {
+    background: var(--primary-saffron);
+    padding: 4px 6px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-gold);
+    display: inline-flex;
+    justify-content: center;
+    gap: 0.2rem;
+  }
+  
+  .mobile-lang-item .lang-btn {
+    color: var(--text-inverse);
+    background: none;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .mobile-lang-item .lang-btn.active {
+    background: var(--royal-gold);
+    color: var(--maroon-dark);
+  }
+}
