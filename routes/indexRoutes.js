@@ -50,8 +50,25 @@ router.get('/dbt', (req, res) => {
 router.get('/contact', (req, res) => {
   res.render('contact', {
     title: 'आमचे संपर्क | Malabar Hill Cha Raja',
-    activeTab: 'contact'
+    activeTab: 'contact',
+    query: req.query
   });
+});
+
+router.post('/contact/enquire', async (req, res) => {
+  const name = String(req.body.name || '').trim();
+  const phone = String(req.body.phone || '').trim();
+  const email = String(req.body.email || '').trim();
+  const message = String(req.body.message || '').trim();
+  if (!name || !phone || !message) return res.status(400).send('Name, mobile number and message are required.');
+  if (email && !/^\S+@\S+\.\S+$/.test(email)) return res.status(400).send('Please provide a valid email address.');
+  try {
+    await mailer.sendMandalEnquiry({ subject: 'Contact enquiry', name, phone, email, message });
+    res.redirect('/contact?enquiry=sent');
+  } catch (error) {
+    console.error('Contact enquiry error:', error.message);
+    res.redirect('/contact?enquiry=unavailable');
+  }
 });
 
 // Official T-Shirt Booking Routes (Renamed from Tshirt Store)

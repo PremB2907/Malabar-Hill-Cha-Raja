@@ -58,26 +58,29 @@
           संदेश पाठवा
         </h2>
 
-        <form id="contactForm">
+        <% if (typeof query !== 'undefined' && query.enquiry === 'sent') { %><p style="color:#166534;font-weight:700;">तुमचा संदेश मंडळाला पाठवला आहे.</p><% } else if (typeof query !== 'undefined' && query.enquiry === 'unavailable') { %><p style="color:#991B1B;font-weight:700;">Email service unavailable. Please contact the mandal directly.</p><% } %>
+        <form id="contactForm" action="/contact/enquire" method="POST">
           <div style="margin-bottom: 1.2rem;">
             <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);" data-i18n="lbl_contact_name">
               तुमचे नाव *
             </label>
-            <input type="text" id="cName" required placeholder="संपूर्ण नाव टाका" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+            <input type="text" id="cName" name="name" required autocomplete="name" placeholder="संपूर्ण नाव टाका" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
           </div>
 
           <div style="margin-bottom: 1.2rem;">
             <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);" data-i18n="lbl_contact_email">
               ईमेल किंवा मोबाईल *
             </label>
-            <input type="text" id="cContact" required placeholder="ईमेल / मोबाईल टाका" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+            <input type="tel" id="cContact" name="phone" required inputmode="tel" autocomplete="tel" placeholder="मोबाईल नंबर टाका" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
           </div>
+
+          <div style="margin-bottom: 1.2rem;"><label style="display:block;font-size:.9rem;font-weight:700;margin-bottom:.4rem;color:var(--text-main);" for="cEmail">ईमेल (पर्यायी)</label><input type="email" id="cEmail" name="email" autocomplete="email" placeholder="तुमचा ईमेल" style="width:100%;padding:.75rem 1rem;border-radius:var(--radius-sm);border:1px solid var(--border-gold);font-size:.95rem;"></div>
 
           <div style="margin-bottom: 1.5rem;">
             <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);" data-i18n="lbl_contact_msg">
               तुमचा संदेश / प्रश्न *
             </label>
-            <textarea id="cMessage" rows="4" required placeholder="येथे संदेश लिहा..." style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;"></textarea>
+            <textarea id="cMessage" name="message" rows="4" required placeholder="येथे संदेश लिहा..." style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;"></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1.05rem;" data-i18n="btn_send_msg">
@@ -107,13 +110,5 @@
 
   </div>
 </section>
-
-<script>
-  document.getElementById('contactForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('तुमचा संदेश यशस्वीरित्या पाठवला गेला आहे! मंडळ प्रतिनिधी लवकरच संपर्क करतील.');
-    document.getElementById('contactForm').reset();
-  });
-</script>
 
 <%- include('partials/footer') %>

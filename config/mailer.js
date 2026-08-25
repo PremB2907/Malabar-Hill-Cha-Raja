@@ -9,7 +9,7 @@ const transporter = smtpUser && smtpPass ? nodemailer.createTransport({
 }) : null;
 
 module.exports = {
-  async sendAdvertisementEnquiry({ name, phone, email, message }) {
+  async sendMandalEnquiry({ subject, name, phone, email, message }) {
     if (!transporter) throw new Error('SMTP is not configured.');
     const cc = ['marketing.malabarhillcharaja@gmail.com'];
     if (email) cc.push(email);
@@ -18,8 +18,12 @@ module.exports = {
       to: 'Mcroffical1973@gmail.com',
       cc,
       replyTo: email || smtpUser,
-      subject: `Advertisement enquiry from ${name}`,
+      subject: `${subject} from ${name}`,
       text: `Name: ${name}\nMobile: ${phone}\nEmail: ${email || 'Not provided'}\n\nMessage: ${message || 'Advertisement enquiry'}`
     });
+  },
+
+  async sendAdvertisementEnquiry(data) {
+    return this.sendMandalEnquiry({ ...data, subject: 'Advertisement enquiry' });
   }
 };
