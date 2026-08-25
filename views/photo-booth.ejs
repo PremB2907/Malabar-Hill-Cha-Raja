@@ -29,7 +29,7 @@
       <button class="crazy-reel-nav-btn prev" aria-label="Previous Slide">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      
+
       <div class="crazy-reel-container">
         <% glimpsesData.forEach(item => { %>
           <div class="crazy-reel-card gold-motion-frame" data-lightbox data-lightbox-src="<%= item.image %>" data-lightbox-title="<%= item.title %> (वर्ष <%= item.year %>)" data-lightbox-caption="<%= item.desc %>">
@@ -59,7 +59,7 @@
 <!-- Decade Historical Grid Section -->
 <section style="background: var(--bg-cream); padding: 4rem 0;">
   <div class="container">
-    
+
     <!-- Gallery Category Filter Pills -->
     <div class="gallery-filter-bar">
       <button class="filter-pill active" data-filter="all" data-i18n="filter_all">सर्व वर्षे</button>
@@ -88,7 +88,7 @@
               <h3 style="font-size: 1.3rem; color: var(--temple-maroon); margin-bottom: 0.6rem;"><%= item.title %></h3>
               <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.2rem;"><%= item.desc %></p>
             </div>
-            
+
             <div style="border-top: 1px dashed var(--border-gold); padding-top: 1rem;">
               <div style="font-size: 0.85rem; color: var(--primary-saffron); font-weight: 700; margin-bottom: 0.3rem;">
                 <span data-i18n="label_height">मूर्तीची उंची</span>: <%= item.height %> | <span data-i18n="label_theme">संकल्पना</span>: <%= item.theme %>
