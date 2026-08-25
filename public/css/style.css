@@ -493,6 +493,11 @@ a:hover {
   .release-map { height: 300px; }
 }
 
+.home-release .release-countdown .flip-val {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .28);
+}
+
 .mandal-top-meta-actions {
   display: flex;
   align-items: center;
