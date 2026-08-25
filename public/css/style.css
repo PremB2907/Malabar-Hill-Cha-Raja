@@ -5,14 +5,7 @@
    Theme: Modern Maharashtrian Heritage (Temple Maroon, Deep Saffron, Royal Gold)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Noto+Serif+Devanagari:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Rozha+One&family=Yatra+One&display=swap');
-
-@font-face {
-  font-family: 'Baloo 2';
-  src: url('../font/Baloo2-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap');
 
 :root {
   --primary-saffron: #D65A4A;
@@ -58,8 +51,9 @@
   --radius-full: 9999px;
 
   --font-en-head: 'Cinzel', 'Playfair Display', serif;
-  --font-mr-head: 'Yatra One', 'Rozha One', 'Noto Serif Devanagari', serif;
-  --font-body: 'Outfit', 'Noto Serif Devanagari', sans-serif;
+  --font-mr-head: 'Baloo 2', sans-serif;
+  --font-body: 'Outfit', 'Baloo 2', sans-serif;
+  --font-mr: 'Baloo 2', sans-serif;
 }
 
 /* Compact corporate rhythm and complementary mandal palette. */
@@ -165,9 +159,10 @@ textarea {
 /* Dynamic Font Scaling & Boosting for Marathi Devanagari Script */
 html[lang="mr"],
 body[data-lang="mr"] {
-  --font-mr-head: 'Baloo 2', 'Yatra One', 'Rozha One', 'Noto Serif Devanagari', serif;
-  --font-en-head: 'Baloo 2', 'Cinzel', 'Playfair Display', serif;
-  --font-body: 'Baloo 2', 'Outfit', 'Noto Serif Devanagari', sans-serif;
+  --font-mr-head: 'Baloo 2', sans-serif;
+  --font-en-head: 'Baloo 2', sans-serif;
+  --font-body: 'Baloo 2', sans-serif;
+  --font-mr: 'Baloo 2', sans-serif;
   font-family: var(--font-body);
 }
 
@@ -518,7 +513,7 @@ a:hover {
 
 html[lang="mr"] .brand-text h2,
 body[data-lang="mr"] .brand-text h2 {
-  font-family: 'Yatra One', 'Noto Serif Devanagari', serif;
+  font-family: 'Baloo 2', sans-serif;
   font-weight: 700;
   letter-spacing: 0px;
 }
