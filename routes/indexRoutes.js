@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const yatraController = require('../controllers/yatraController');
 const tshirtController = require('../controllers/tshirtController');
+const mailer = require('../config/mailer');
 
 // Home & About Routes
 router.get('/', yatraController.renderHomePage);
@@ -22,7 +23,23 @@ router.get('/social-work', yatraController.renderSocialWorkPage);
 router.get('/committee', yatraController.renderCommitteePage);
 
 router.get('/advertise', (req, res) => {
-  res.render('advertise', { title: 'Advertisement Opportunities | Malabar Hill Cha Raja', activeTab: 'advertise' });
+  res.render('advertise', { title: 'Advertisement Opportunities | Malabar Hill Cha Raja', activeTab: 'advertise', query: req.query });
+});
+
+router.post('/advertise/enquire', async (req, res) => {
+  const name = String(req.body.name || '').trim();
+  const phone = String(req.body.phone || '').trim();
+  const email = String(req.body.email || '').trim();
+  const message = String(req.body.message || '').trim();
+  if (!name || !phone) return res.status(400).send('Name and mobile number are required.');
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).send('Please provide a valid email address.');
+  try {
+    await mailer.sendAdvertisementEnquiry({ name, phone, email, message });
+    res.redirect('/advertise?enquiry=sent');
+  } catch (error) {
+    console.error('Advertisement enquiry error:', error.message);
+    res.redirect('/advertise?enquiry=unavailable');
+  }
 });
 
 router.get('/dbt', (req, res) => {
