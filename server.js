@@ -38,7 +38,7 @@ app.get('/assets/brochure-2026.pdf', (req, res) => res.sendFile(path.join(__dirn
 
 // i18n Language Cookie Middleware
 app.use((req, res, next) => {
-  let lang = 'en';
+  let lang = 'mr';
   const cookieHeader = req.headers.cookie || '';
   const match = cookieHeader.match(/mhr_lang=(mr|en)/);
   if (match) {

@@ -52,7 +52,7 @@
       try {
         var saved = localStorage.getItem('mhr_lang');
         var cookieMatch = document.cookie.match(/mhr_lang=(mr|en)/);
-        var l = saved || (cookieMatch ? cookieMatch[1] : '<%= typeof lang !== "undefined" ? lang : "en" %>');
+        var l = saved || (cookieMatch ? cookieMatch[1] : '<%= typeof lang !== "undefined" ? lang : "mr" %>');
         document.documentElement.lang = l;
         document.documentElement.setAttribute('data-lang', l);
         document.cookie = "mhr_lang=" + l + "; path=/; max-age=31536000; SameSite=Lax";
@@ -136,8 +136,8 @@
           <li><a href="/social-work" class="nav-link <%= activeTab === 'socialwork' ? 'active' : '' %>" data-i18n="nav_socialwork"><%= typeof lang !== 'undefined' && lang === 'mr' ? 'सामाजिक कार्य' : 'Social Work' %></a></li>
           <li><a href="/tshirt" class="nav-link <%= activeTab === 'tshirt' ? 'active' : '' %>" data-i18n="nav_tshirt"><%= typeof lang !== 'undefined' && lang === 'mr' ? 'टी-शर्ट' : 'Official T-Shirt' %></a></li>
           <li><a href="/committee" class="nav-link <%= activeTab === 'committee' ? 'active' : '' %>" data-i18n="nav_committee"><%= typeof lang !== 'undefined' && lang === 'mr' ? 'कार्यकारिणी' : 'Committee' %></a></li>
-          <li><a href="/advertise" class="nav-link <%= activeTab === 'advertise' ? 'active' : '' %>">Advertise</a></li>
-          <li><a href="/dbt" class="nav-link <%= activeTab === 'dbt' ? 'active' : '' %>">DBT</a></li>
+          <li><a href="/advertise" class="nav-link <%= activeTab === 'advertise' ? 'active' : '' %>" data-i18n="nav_advertise">जाहिरात</a></li>
+          <li><a href="/dbt" class="nav-link <%= activeTab === 'dbt' ? 'active' : '' %>" data-i18n="nav_dbt">थेट बँक हस्तांतरण</a></li>
           <li><a href="/contact" class="nav-link <%= activeTab === 'contact' ? 'active' : '' %>" data-i18n="nav_contact"><%= typeof lang !== 'undefined' && lang === 'mr' ? 'संपर्क' : 'Contact' %></a></li>
           
           <!-- Distinct Donate Button -->

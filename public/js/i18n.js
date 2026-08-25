@@ -25,6 +25,8 @@ const translations = {
     nav_committee: "Committee",
     nav_contact: "Contact",
     nav_donate: "Donate Now",
+    nav_advertise: "Advertise",
+    nav_dbt: "Direct Bank Transfer",
 
     // Hero & Flip Clock
     hero_tag: "ESTD 1973",
@@ -230,6 +232,8 @@ const translations = {
     nav_committee: "कार्यकारिणी",
     nav_contact: "संपर्क",
     nav_donate: "देणगी",
+    nav_advertise: "जाहिरात",
+    nav_dbt: "थेट बँक हस्तांतरण",
 
     // Hero & Flip Clock
     hero_tag: "स्थापना १९७३",
@@ -242,7 +246,7 @@ const translations = {
     countdown_title: "श्रींच्या आगमनासाठी उत्सुकता",
     label_days: "दिवस",
     label_hours: "तास",
-    label_mins: "मिनाटे",
+    label_mins: "मिनिटे",
     label_secs: "सेकंद",
 
     // Ticker Marquee
@@ -271,7 +275,7 @@ const translations = {
     craft_badge: "राजेशाही वस्त्रालंकार व शिल्प",
     craft_title: "१८ फुटी भव्यता व सुवर्ण शृंगार",
     craft_desc1: "मालाबार हिलच्या राजाची मूर्ती १८ फूट उंच असून, तिच्या चेहऱ्यावरील विलोभनीय हास्य आणि भव्य डोळे भाविकांना मंत्रमुग्ध करतात.",
-    craft_desc2: "काष्ठ व सुवर्ण सिहांसनावर आरूढ असलेली श्रींची मूर्ती दरवर्षी नवीन सांस्कृतिक संकल्पनेनुसार तयार केली जाते.",
+    craft_desc2: "काष्ठ व सुवर्ण सिंहासनावर आरूढ असलेली श्रींची मूर्ती दरवर्षी नवीन सांस्कृतिक संकल्पनेनुसार तयार केली जाते.",
     craft_stat1_num: "१८ फूट",
     craft_stat1_label: "मूर्तीची भव्य उंची",
     craft_stat2_num: "५३+ वर्षे",
