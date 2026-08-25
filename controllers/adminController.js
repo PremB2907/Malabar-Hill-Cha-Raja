@@ -73,6 +73,10 @@ module.exports = {
       const tshirtOrders = await db.getTshirtOrders();
       const offlineDonations = await db.getOfflineDonations();
       const offlineTshirtOrders = await db.getOfflineTshirtOrders();
+      const excelSheets = await db.getOfflineExcelSheets();
+      const currentYear = new Date().getFullYear();
+      const recentCutoff = new Date(currentYear - 2, 0, 1);
+      const recentDonations = donations.filter(d => new Date(d.created_at) >= recentCutoff);
       const yatraStatus = db.getYatraStatus();
       const logs = db.getLogs();
 
@@ -91,6 +95,9 @@ module.exports = {
         tshirtOrders,
         offlineDonations,
         offlineTshirtOrders,
+        excelSheets,
+        recentDonations,
+        recentDonationYears: `${currentYear - 2}-${currentYear}`,
         yatraStatus,
         logs,
         totalDonations,

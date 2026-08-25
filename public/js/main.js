@@ -216,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mins: document.getElementById('countMins'),
     secs: document.getElementById('countSecs')
   };
+  const countdownFinished = document.getElementById('countdownFinished');
 
   function animateCountdownUnit(key, value) {
     const targetEl = countdownElements[key];
@@ -237,6 +238,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateCountdown() {
     const now = Date.now();
     const diff = countdownTarget - now;
+    if (diff <= 0 && countdownFinished) {
+      countdownFinished.hidden = false;
+      document.querySelector('.flip-clock-grid')?.setAttribute('hidden', '');
+    }
     const safeDiff = diff > 0 ? diff : 0;
 
     const values = {

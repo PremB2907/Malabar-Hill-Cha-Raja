@@ -28,6 +28,18 @@
 
           <div class="grid-3" style="margin-bottom:3rem;">
 
+            <div class="card-temple admin-quick-card">
+              <div class="admin-card-kicker">LAST 3 YEARS</div>
+              <div class="admin-card-value"><%= recentDonations.length %></div>
+              <span><%= recentDonationYears %> online donation records</span>
+            </div>
+
+            <div class="card-temple admin-quick-card">
+              <div class="admin-card-kicker">EXCEL VISIBILITY</div>
+              <div class="admin-card-value"><%= excelSheets.length %></div>
+              <span>Uploaded sheets available in records</span>
+            </div>
+
             <!-- TOTAL DONATIONS -->
 
             <div class="card-temple" style="text-align:center;">
@@ -253,6 +265,16 @@
                     <% }); %>
                 </tbody>
               </table>
+            </div>
+          </div>
+
+          <div class="card-temple admin-recent-panel" style="margin-bottom: 3rem; padding: 2rem;">
+            <div class="admin-panel-heading"><div><h3>Last 3 Years Donations</h3><p>Recent online donation records for quick review.</p></div><a href="/admin/excel" class="btn btn-outline">Open Excel Records</a></div>
+            <div class="admin-record-list">
+              <% recentDonations.slice(0, 8).forEach(d => { %>
+                <div class="admin-record-row"><span><strong><%= d.donor_name %></strong><small><%= d.receipt_no %> · <%= new Date(d.created_at).toLocaleDateString('en-IN') %></small></span><strong>₹ <%= (parseFloat(d.amount) || 0).toLocaleString('en-IN') %></strong></div>
+              <% }) %>
+              <% if (!recentDonations.length) { %><p class="admin-empty-state">No online donations in the last three years.</p><% } %>
             </div>
           </div>
 

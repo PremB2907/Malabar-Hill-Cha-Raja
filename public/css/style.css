@@ -15,18 +15,18 @@
 }
 
 :root {
-  --primary-saffron: #D97706;
-  --saffron-dark: #B45309;
-  --saffron-light: #FEF3C7;
+  --primary-saffron: #D65A4A;
+  --saffron-dark: #A63F36;
+  --saffron-light: #FCE8E3;
 
-  --temple-maroon: #7F1D1D;
-  --maroon-dark: #450A0A;
-  --maroon-soft: #991B1B;
+  --temple-maroon: #17324D;
+  --maroon-dark: #0D2033;
+  --maroon-soft: #245577;
 
-  --royal-gold: #D4AF37;
-  --gold-dark: #B8860B;
-  --gold-soft: #FEF08A;
-  --copper-accent: #B87333;
+  --royal-gold: #D8A84E;
+  --gold-dark: #A97827;
+  --gold-soft: #F9E6AF;
+  --copper-accent: #0F766E;
 
   --bg-ivory: #FFF8E7;
   --bg-cream: #FAF5EF;
@@ -60,6 +60,65 @@
   --font-en-head: 'Cinzel', 'Playfair Display', serif;
   --font-mr-head: 'Yatra One', 'Rozha One', 'Noto Serif Devanagari', serif;
   --font-body: 'Outfit', 'Noto Serif Devanagari', sans-serif;
+}
+
+/* Compact corporate rhythm and complementary mandal palette. */
+.mandal-banner-3d-text,
+.brand-text h2,
+.hero-main-title {
+  color: #F9E6AF;
+  text-shadow: 2px 2px 0 #0D2033, 0 0 22px rgba(216, 168, 78, .28);
+}
+
+.hero-main-title {
+  letter-spacing: .02em;
+  font-size: clamp(2.3rem, 6vw, 5.8rem);
+}
+
+.countdown-finished {
+  display: grid;
+  gap: .35rem;
+  color: #fff;
+  font-size: .9rem;
+}
+
+.countdown-finished[hidden] { display: none; }
+.party-popper { font-size: 2.1rem; animation: popper-burst .8s ease-out both; }
+
+@keyframes popper-burst {
+  0% { transform: scale(.4) rotate(-18deg); opacity: 0; }
+  65% { transform: scale(1.25) rotate(8deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.admin-quick-card { padding: 1.25rem; text-align: center; }
+.admin-card-kicker { color: var(--primary-saffron); font-size: .75rem; font-weight: 800; letter-spacing: .06em; }
+.admin-card-value { color: var(--temple-maroon); font-size: 2rem; font-weight: 800; line-height: 1.2; margin: .35rem 0; }
+.admin-quick-card span, .admin-empty-state, .admin-panel-heading p { color: var(--text-muted); font-size: .85rem; }
+.admin-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.admin-panel-heading h3 { color: var(--temple-maroon); margin: 0; }
+.admin-panel-heading p { margin: .3rem 0 0; }
+.admin-record-list { border-top: 1px solid var(--border-subtle); margin-top: 1rem; }
+.admin-record-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--border-subtle); }
+.admin-record-row small { display: block; color: var(--text-muted); font-size: .75rem; margin-top: .15rem; }
+
+@media (max-width: 768px) {
+  body { line-height: 1.6; }
+  .container { width: min(100% - 2rem, 680px); }
+  .page-hero-banner { padding: 3rem 0 2.5rem; }
+  .page-hero-banner h1 { font-size: clamp(2rem, 10vw, 3.2rem); line-height: 1.1; }
+  .hero-grid-container { width: calc(100% - 2rem) !important; top: 53% !important; }
+  .hero-main-title { font-size: clamp(2.2rem, 12vw, 4rem); line-height: 1.05; }
+  .hero-bg-watermark-text { font-size: 16vw; left: 0; white-space: normal; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-countdown-card { padding: 1.25rem 1rem; }
+  .flip-clock-grid { gap: .35rem; }
+  .flip-clock-unit { min-width: 0; }
+  .flip-val { font-size: 1.4rem; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 1rem; }
+  .card-temple { padding: 1.25rem !important; }
+  .admin-record-row { align-items: flex-start; }
+  table { font-size: .8rem; }
 }
 
 * {
