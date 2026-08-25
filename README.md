@@ -7,7 +7,7 @@ Mandal details:
 - Established: 1973
 - Address: Bhaji Galli, Shankar Sheth Road, Grant Road, Mumbai - 400007
 - Mandal emails: `Mcroffical1973@gmail.com`, `marketing.malabarhillcharaja@gmail.com`
-- Website provider: Mitram Solutions (`mitramsolutions@gmail.com`)
+- Website provider/sending mailbox: Mitram Solutions (`mitramsolutions@gmail.com`)
 
 ## Features
 
@@ -65,7 +65,7 @@ DB_NAME=malabar_hill_cha_raja
 DB_PORT=3306
 ```
 
-Razorpay and Twilio fall back to simulated/logged behavior when credentials are absent. Configure a persistent MySQL database for production records; the in-memory fallback resets when the serverless instance restarts.
+Razorpay and Twilio fall back to simulated/logged behavior when credentials are absent. Advertisement enquiries are sent from `SMTP_USER` to the mandal, with the marketing mailbox in CC and the visitor in CC when an email is provided. Configure a persistent MySQL database for production records; the in-memory fallback resets when the serverless instance restarts.
 
 ## Important Routes
 
