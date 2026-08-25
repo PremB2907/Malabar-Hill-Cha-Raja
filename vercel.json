@@ -7,7 +7,13 @@
       "config": {
         "includeFiles": [
           "views/**",
-          "public/**"
+          "public/**",
+          "Bappa Pics/**",
+          "Celebrities/**",
+          "Broucher 2026.pdf",
+          "bank details.jpeg",
+          "Committee members.jpeg",
+          "history.txt"
         ]
       }
     }
