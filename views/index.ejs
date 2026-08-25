@@ -1,506 +1,78 @@
 <%- include('partials/header') %>
 
-  <!-- SECTION 3: FULL-BLEED HERO CAROUSEL -->
-  <section class="hero-carousel" id="heroCarousel">
-    <!-- Slide 1: Abhaya Mudra Blessing -->
-    <div class="hero-slide active">
-      <img src="/images/malabar_hero_1.jpg" alt="Malabar Hill Cha Raja Blessing" class="hero-slide-bg hero-img-1">
-    </div>
-    <!-- Slide 2: Seated Divine Idol -->
-    <div class="hero-slide">
-      <img src="/images/malabar_hero_2.jpg" alt="Malabar Hill Cha Raja Seated Idol" class="hero-slide-bg hero-img-2">
-    </div>
-    <!-- Slide 3: Procession and Visarjan -->
-    <div class="hero-slide">
-      <img src="/images/malabar_hero_3.jpg" alt="Malabar Hill Cha Raja Procession" class="hero-slide-bg hero-img-3">
-    </div>
+<main class="home-release">
+  <section class="release-hero hero-carousel" id="heroCarousel" aria-label="Malabar Hill Cha Raja">
+    <div class="hero-slide active"><img src="/images/malabar_hero_1.jpg" alt="Malabar Hill Cha Raja blessing devotees" class="hero-slide-bg hero-img-1"></div>
+    <div class="hero-slide"><img src="/images/malabar_hero_2.jpg" alt="Malabar Hill Cha Raja seated idol" class="hero-slide-bg hero-img-2"></div>
+    <div class="hero-slide"><img src="/images/malabar_hero_3.jpg" alt="Malabar Hill Cha Raja procession" class="hero-slide-bg hero-img-3"></div>
 
-    <!-- Hero Content Overlay -->
-    <div class="hero-grid-container"
-      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; width: 90%; max-width: 1360px;">
-      <div class="hero-content-left">
-        <div class="hero-bg-watermark-text" aria-hidden="true">MALABAR HILL CHA RAJA</div>
-
-        <div class="section-badge"
-          style="position: relative; z-index: 2; background: rgba(201, 162, 39, 0.2); color: var(--gold-soft); border: none !important;"
-          data-i18n="hero_tag">
-          ESTD 1973 | REG NO. E-3892 MUMBAI
+    <div class="release-hero-inner">
+      <div class="release-hero-copy">
+        <span class="release-kicker" data-i18n="hero_tag">ESTD 1973 | REG NO. E-3892 MUMBAI</span>
+        <h1 class="release-hero-title" data-i18n="hero_title">Malabar Hill Cha Raja</h1>
+        <p class="release-hero-subtitle" data-i18n="hero_subtitle">Shree Bal Gopal Ganeshutsav Mandal. A timeless tradition of faith, royal heritage, and community service since 1973.</p>
+        <div class="release-hero-actions">
+          <a href="#about" class="release-button release-button-light">Discover the Mandal <i class="fa-solid fa-arrow-down"></i></a>
+          <a href="/donate" class="release-button release-button-orange" data-i18n="nav_donate">Donate Now</a>
         </div>
-
-        <h1 class="hero-main-title" data-i18n="hero_title">
-          Malabar Hill Cha Raja
-        </h1>
-
-        <p class="hero-sub-tag" data-i18n="hero_sub_tag">
-          Faith Beyond Boundaries
-        </p>
-
-        <p class="hero-subtitle-text" data-i18n="hero_subtitle">
-          Shree Bal Gopal Ganeshutsav Mandal.
-        </p>
-
-        <div class="hero-actions" style="margin-top: 1.8rem;">
-          <a href="https://www.youtube.com/@MalabarHillChaRaja-e2z" target="_blank" rel="noopener noreferrer"
-            class="btn btn-live-pulsing" id="btnHeroLiveDarshan">
-            <i class="fa-solid fa-play"></i>
-            Watch Live Darshan
-          </a>
-
-          <a href="/donate" class="btn btn-primary donate-square-btn"
-            style="background: #C9A227; color: #4A0E0E; border: none; font-weight: 800;">
-            <span data-i18n="nav_donate">Donate Now</span>
-          </a>
+        <div class="release-social-links" aria-label="Official social channels">
+          <a href="https://www.youtube.com/@MalabarHillChaRaja-e2z" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.facebook.com/malabarhillcharaja" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.instagram.com/malabarhill_cha_raja/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
       </div>
-
-      <!-- Right Side Countdown Pillar -->
-      <div class="hero-countdown-card">
-        <span class="countdown-badge-pill">
-          <i class="fa-solid fa-om" style="color: var(--gold-soft); margin-right: 6px;"></i> <span
-            data-i18n="countdown_badge">Ganeshotsav 2026 Arrival</span>
-        </span>
-
-        <h3 class="countdown-card-title" data-i18n="countdown_title">
-          Awaiting Divine Arrival
-        </h3>
-
-        <!-- Clean Countdown Timer Grid -->
+      <div class="release-countdown">
+        <span class="release-countdown-kicker" data-i18n="countdown_badge">Ganeshotsav 2026 Arrival</span>
+        <h2 data-i18n="countdown_title">Awaiting Divine Arrival</h2>
         <div class="flip-clock-grid">
-          <div class="flip-unit-wrap">
-            <div class="flip-clock-unit" id="flipUnitDays">
-              <span class="flip-val" id="countDays">--</span>
-            </div>
-            <span class="timer-label-txt" data-i18n="label_days"
-              style="margin-top: 6px; font-weight: 700; color: var(--gold-soft);">Days</span>
-          </div>
-
-          <div class="flip-unit-wrap">
-            <div class="flip-clock-unit" id="flipUnitHours">
-              <span class="flip-val" id="countHours">--</span>
-            </div>
-            <span class="timer-label-txt" data-i18n="label_hours"
-              style="margin-top: 6px; font-weight: 700; color: var(--gold-soft);">Hours</span>
-          </div>
-
-          <div class="flip-unit-wrap">
-            <div class="flip-clock-unit" id="flipUnitMins">
-              <span class="flip-val" id="countMins">--</span>
-            </div>
-            <span class="timer-label-txt" data-i18n="label_mins"
-              style="margin-top: 6px; font-weight: 700; color: var(--gold-soft);">Mins</span>
-          </div>
-
-          <div class="flip-unit-wrap">
-            <div class="flip-clock-unit" id="flipUnitSecs">
-              <span class="flip-val" id="countSecs">--</span>
-            </div>
-            <span class="timer-label-txt" data-i18n="label_secs"
-              style="margin-top: 6px; font-weight: 700; color: var(--gold-soft);">Secs</span>
-          </div>
+          <div class="flip-unit-wrap"><div class="flip-clock-unit"><span class="flip-val" id="countDays">--</span></div><span class="timer-label-txt" data-i18n="label_days">Days</span></div>
+          <div class="flip-unit-wrap"><div class="flip-clock-unit"><span class="flip-val" id="countHours">--</span></div><span class="timer-label-txt" data-i18n="label_hours">Hours</span></div>
+          <div class="flip-unit-wrap"><div class="flip-clock-unit"><span class="flip-val" id="countMins">--</span></div><span class="timer-label-txt" data-i18n="label_mins">Mins</span></div>
+          <div class="flip-unit-wrap"><div class="flip-clock-unit"><span class="flip-val" id="countSecs">--</span></div><span class="timer-label-txt" data-i18n="label_secs">Secs</span></div>
         </div>
-        <div class="countdown-finished" id="countdownFinished" hidden>
-          <span class="party-popper" aria-hidden="true">🎉</span>
-          <strong>Ganeshotsav has begun</strong>
-          <span>Darshan and seva updates are now live.</span>
-        </div>
+        <div class="countdown-finished" id="countdownFinished" hidden><span class="party-poppers" aria-hidden="true">🎉 🎊 🎉</span><strong>Ganeshotsav has begun</strong><span>Darshan and seva updates are now live.</span></div>
       </div>
     </div>
-
-    <!-- Carousel Dot Indicators -->
-    <div class="hero-carousel-dots">
-      <div class="carousel-dot active" data-slide="0"></div>
-      <div class="carousel-dot" data-slide="1"></div>
-      <div class="carousel-dot" data-slide="2"></div>
-    </div>
-    <!-- MUSHak PARADE -->
-    <div class="mushak-parade" aria-hidden="true">
-      <img src="/images/mushak.svg" class="mushak-runner mushak-runner-one" alt="">
-
-      <img src="/images/mushak.svg" class="mushak-runner mushak-runner-two" alt="">
+    <div class="hero-carousel-dots" aria-label="Hero image slides">
+      <button class="carousel-dot active" data-slide="0" aria-label="Show first image"></button>
+      <button class="carousel-dot" data-slide="1" aria-label="Show second image"></button>
+      <button class="carousel-dot" data-slide="2" aria-label="Show third image"></button>
     </div>
   </section>
 
-  <!-- SECTION 4: NEWS & ANNOUNCEMENT TICKER STRIP -->
-  <div class="marquee-ticker-wrap">
-    <span class="marquee-ticker-badge" data-i18n="ticker_badge">FESTIVAL UPDATES</span>
-    <div class="marquee-ticker-content">
-      <span data-i18n="ticker_text">🌸 Ganeshotsav 2026 Procession Coming Soon! • Daily Maha Aarti Morning 8:00 AM &
-        Evening 8:00 PM • 50,000+ Daily Annadan Mahaprasad • 80G Tax Exempt Donations Open 🌸</span>
+  <section class="release-about" id="about">
+    <div class="container release-section-grid">
+      <div class="release-image-frame"><img src="/images/malabar_ganpati_3.jpg" alt="Malabar Hill Cha Raja Ganpati idol" loading="lazy"></div>
+      <div class="release-section-copy">
+        <span class="release-section-label" data-i18n="about_badge">Historic Heritage & Legacy</span>
+        <h2 data-i18n="about_history_title">The Mandal, in brief</h2>
+        <p data-i18n="about_history_p1">Established in 1973, Shree Bal Gopal Ganeshutsav Mandal has continued a grand public Ganeshotsav tradition through the dedication of local residents, youth volunteers, and senior mentors.</p>
+        <p class="release-about-summary" data-i18n="about_history_p2">Over the decades, Malabar Hill Cha Raja became an iconic divine symbol cherished by millions of devotees.</p>
+        <details class="release-more"><summary>More about the mandal <i class="fa-solid fa-chevron-down"></i></summary><div class="release-more-content"><p>The mandal brings together devotion, Maharashtrian culture, and year-round community service. Its annual celebrations are known for the distinctive idol, thoughtful mandap design, and warm welcome extended to every devotee.</p><p>From Annadan Mahaprasad and health initiatives to cultural programs, the work continues through the shared effort of residents, volunteers, and the committee.</p></div></details>
+      </div>
     </div>
-  </div>
+    <div class="release-facts container"><div><strong>1973</strong><span>Founded</span></div><div><strong>18 ft</strong><span>Royal idol</span></div><div><strong>80G</strong><span>Eligible donations</span></div></div>
+  </section>
 
-  <!-- SECTION 5: PRESIDENT'S MESSAGE & ANIMATED STAT COUNTERS -->
-  <section style="background: var(--bg-cream); padding: 6rem 0; border-bottom: 1px solid var(--border-gold);">
+  <section class="release-glimpses" id="glimpses">
     <div class="container">
-      <div class="grid-2" style="align-items: center; gap: 4rem;">
-        <div>
-          <span class="section-badge" data-i18n="pres_badge">President & Executive Message</span>
-          <h2 class="section-title" style="font-size: 2.5rem; margin-top: 0.5rem;" data-i18n="pres_title">Warm Welcome &
-            Divine Blessings</h2>
-          <p style="color: var(--text-muted); font-size: 1.08rem; line-height: 1.85; margin-bottom: 1.5rem;"
-            data-i18n="pres_desc">
-            Welcome to the official digital temple portal of Malabar Hill Cha Raja.
-          </p>
-
-          <!-- Pull Quote Style Emphasis -->
-          <blockquote
-            style="border-left: 4px solid #C9A227; padding-left: 1.2rem; margin: 1.5rem 0; font-family: var(--font-mr-head); font-size: 1.25rem; color: #6B1414; font-style: italic;"
-            data-i18n="pres_quote">
-            "Faith, service, and social commitment are the core pillars of Malabar Hill Cha Raja Mandal."
-          </blockquote>
-
-          <div
-            style="display: flex; gap: 1.5rem; border-left: 3px solid var(--royal-gold); padding-left: 1.5rem; background: rgba(212, 175, 55, 0.05); padding: 1.2rem 1.5rem; border-radius: var(--radius-sm);">
-            <div>
-              <h4 style="margin: 0; color: var(--temple-maroon); font-size: 1.15rem;" data-i18n="pres_name">Mr. Sandeep
-                Sawal</h4>
-              <p style="margin: 0; font-size: 0.88rem; color: var(--primary-saffron); font-weight: 700;"
-                data-i18n="pres_role">President, Shree Bal Gopal Ganeshutsav Mandal</p>
-            </div>
-          </div>
-        </div>
-
-        <div style="position: relative;">
-          <div class="gold-motion-frame">
-            <img src="/images/malabar_ganpati_3.jpg" alt="Malabar Hill Cha Raja Ganpati"
-              style="width: 100%; height: 460px; object-fit: cover; object-position: center center; display: block;">
-          </div>
-        </div>
+      <div class="release-section-heading"><span class="release-section-label" data-i18n="nav_glimpses">Glimpses</span><h2 data-i18n="reel_title">Glimpses Over The Years</h2><p>Selected moments from the mandal's celebrations and the many forms of Malabar Hill Cha Raja.</p></div>
+      <div class="release-gallery-grid">
+        <% (typeof glimpsesData !== 'undefined' ? glimpsesData : []).slice(0, 6).forEach(item => { %>
+          <button class="release-gallery-item" type="button" data-lightbox data-lightbox-src="<%= item.image %>" data-lightbox-title="<%= item.title %> (Year <%= item.year %>)" data-lightbox-caption="<%= item.desc %>"><img src="<%= item.image %>" alt="<%= item.title %>" loading="lazy"><span><%= item.year %></span></button>
+        <% }); %>
       </div>
-
-      <!-- Animated Stat Counter Row -->
-      <div class="grid-4" style="margin-top: 4rem; gap: 1.5rem;">
-        <div class="stat-counter-card">
-          <div class="stat-num-value" data-target="1973">1973</div>
-          <div class="stat-label-text" data-i18n="stat_year_label">Founding Year</div>
-        </div>
-        <div class="stat-counter-card">
-          <div class="stat-num-value" data-target="35" data-suffix="+">35+</div>
-          <div class="stat-label-text" data-i18n="stat_service_label">Years of Continuous Service</div>
-        </div>
-        <div class="stat-counter-card">
-          <div class="stat-num-value" data-target="50000" data-suffix="+">50,000+</div>
-          <div class="stat-label-text" data-i18n="stat_prasadam_label">Daily Mahaprasad Devotees</div>
-        </div>
-        <div class="stat-counter-card">
-          <div class="stat-num-value" data-target="500000" data-suffix="+">500,000+</div>
-          <div class="stat-label-text" data-i18n="stat_visitors_label">Annual Visiting Devotees</div>
-        </div>
-      </div>
+      <a class="release-text-link" href="/glimpses">View the full archive <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </section>
 
-
-
-  <!-- ==========================================================================
-     CHAPTER IV: LEGACY & DEVOTION
-     ========================================================================== -->
-  <section style="background: var(--bg-cream); padding: 6rem 0; border-bottom: 1px solid var(--border-gold);">
-    <div class="container">
-      <div class="grid-2" style="align-items: center; gap: 4rem;">
-        <div class="gold-motion-frame" style="height: 480px;">
-          <img src="/images/malabar_ganpati_1.jpg" alt="Malabar Hill Cha Raja Peshwa Craft"
-            style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-
-        <div>
-          <span class="section-badge" data-i18n="craft_badge">Royal Attire & Sculpture Craft</span>
-          <h2 class="section-title" style="font-size: 2.4rem;" data-i18n="craft_title">18-Feet Grandeur & Golden
-            Decoration</h2>
-          <p style="color: var(--text-muted); font-size: 1.08rem; line-height: 1.85; margin-bottom: 1.5rem;"
-            data-i18n="craft_desc1">
-            Standing 18 feet tall, the divine smile and radiant eyes of Malabar Hill Cha Raja captivate millions of
-            visiting devotees.
-          </p>
-          <p style="color: var(--text-muted); font-size: 1.08rem; line-height: 1.85; margin-bottom: 2rem;"
-            data-i18n="craft_desc2">
-            Seated on carved wooden and golden thrones, the idol form is crafted according to unique Maharashtrian
-            cultural themes every single year.
-          </p>
-
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <div
-              style="background: #FFFFFF; border: 1.5px solid var(--royal-gold); padding: 1rem 1.5rem; border-radius: var(--radius-md); flex: 1;">
-              <div
-                style="font-size: 1.8rem; font-weight: 800; color: var(--primary-saffron); font-family: var(--font-en-head);"
-                data-i18n="craft_stat1_num">18 Feet</div>
-              <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);"
-                data-i18n="craft_stat1_label">Grand Idol Height</div>
-            </div>
-            <div
-              style="background: #FFFFFF; border: 1.5px solid var(--royal-gold); padding: 1rem 1.5rem; border-radius: var(--radius-md); flex: 1;">
-              <div
-                style="font-size: 1.8rem; font-weight: 800; color: var(--primary-saffron); font-family: var(--font-en-head);"
-                data-i18n="craft_stat2_num">35+ Yrs</div>
-              <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);"
-                data-i18n="craft_stat2_label">Legacy of Pure Devotion</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="release-contact" id="address">
+    <div class="release-contact-top"><div class="container release-contact-grid">
+      <div><span class="release-section-label" data-i18n="location_tag">Mandap Location & Contact</span><h2 data-i18n="location_title">Come for darshan</h2><p class="release-contact-lead" data-i18n="location_sub">Bhaji Galli, Shankar Sheth Road, Grant Road, Mumbai - 400007.</p><div class="release-contact-list"><p><i class="fa-solid fa-location-dot"></i><span data-i18n="contact_address">Bhaji Galli, Shankar Sheth Road, Grant Road, Mumbai - 400007.</span></p><p><i class="fa-solid fa-file-shield"></i><span data-i18n="contact_reg">Reg No: E-3892 Mumbai (80G Tax Exempt Certified)</span></p></div><a href="https://www.google.com/maps/search/?api=1&query=Bhaji%20Galli%2C%20Shankar%20Sheth%20Road%2C%20Grant%20Road%2C%20Mumbai%20400007" target="_blank" rel="noopener noreferrer" class="release-button release-button-dark">Open in Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+      <div class="release-map"><iframe src="https://www.google.com/maps?q=Bhaji%20Galli%2C%20Shankar%20Sheth%20Road%2C%20Grant%20Road%2C%20Mumbai%20400007&output=embed" title="Malabar Hill Cha Raja mandap location" loading="lazy" allowfullscreen></iframe></div>
+    </div></div>
+    <div class="release-contact-bottom"><div class="container"><p>Shree Bal Gopal Ganeshutsav Mandal, Mumbai</p><a href="/contact">All contact details <i class="fa-solid fa-arrow-right"></i></a></div></div>
   </section>
+</main>
 
-  <!-- ==========================================================================
-     CHAPTER V: TODAY'S DARSHAN & LIVE STREAM
-     ========================================================================== -->
-  <section style="background: #1B1B1B; color: #FFFFFF; padding: 6rem 0; border-bottom: 3px solid var(--royal-gold);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge"
-          style="background: rgba(212,175,55,0.2); color: var(--gold-soft); border-color: var(--royal-gold);"
-          data-i18n="live_badge">Live Stream</span>
-        <h2 class="section-title" style="color: var(--gold-soft);" data-i18n="live_title">Ganeshotsav Aarti & Live
-          Stream</h2>
-        <div style="
-  text-align: center;
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
-">
-          <h3 style="
-    margin: 0 0 0.55rem;
-    text-align: center;
-  ">
-            Watch 24/7 Live Stream
-          </h3>
-
-          <p style="
-    margin: 0;
-    text-align: center;
-    line-height: 1.6;
-  ">
-            Daily Morning (8:00 AM) &amp; Evening (8:00 PM) Maha Aarti
-            <br>
-            Directly from the Royal Mandap
-          </p>
-        </div>
-        <div class="gold-divider"></div>
-      </div>
-
-      <div
-        style="max-width: 900px; margin: 0 auto; background: #0A0A0A; border: 2px solid var(--royal-gold); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8);">
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-          <iframe src="https://www.youtube.com/@MalabarHillChaRaja-e2z"
-            style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
-        </div>
-        <div
-          style="padding: 1.2rem 1.8rem; background: #1B1B1B; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-          <div>
-            <h4 style="color: var(--gold-soft); margin: 0; font-size: 1.1rem;" data-i18n="live_box_title">Malabar Hill
-              Cha Raja - 24/7 Live Stream</h4>
-            <p style="color: #9CA3AF; font-size: 0.85rem; margin: 0;" data-i18n="live_box_sub">Official YouTube Live
-              Channel Stream</p>
-          </div>
-          <a href="https://www.youtube.com/@MalabarHillChaRaja-e2z" target="_blank" rel="noopener noreferrer"
-            class="btn btn-primary">
-            <i class="fa-brands fa-youtube" style="color: #FF0000; margin-right: 6px;"></i> <span
-              data-i18n="btn_watch_youtube">Watch on YouTube</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-     CHAPTER VI: CELEBRATION (Glimpses Gallery)
-     ========================================================================== -->
-  <section style="background: var(--bg-ivory); padding: 6rem 0; border-bottom: 1px solid var(--border-gold);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge" data-i18n="reel_tag">HISTORIC GOLDEN MOMENTS</span>
-        <h2 class="section-title" data-i18n="reel_title">Glimpses Over The Years</h2>
-        <p class="section-subtitle" data-i18n="reel_sub">
-          Glorious forms, royal thrones, and divine arches of Malabar Hill Cha Raja across the years.
-        </p>
-        <div class="gold-divider"></div>
-      </div>
-
-      <!-- Gallery Filter Bar -->
-      <div class="gallery-filter-bar">
-        <button class="filter-pill active" data-filter="all" data-i18n="filter_all">All Years</button>
-        <button class="filter-pill" data-filter="idols" data-i18n="filter_idols">Idols & Thrones</button>
-        <button class="filter-pill" data-filter="visarjan" data-i18n="filter_visarjan">Visarjan Procession</button>
-        <button class="filter-pill" data-filter="decor" data-i18n="filter_decor">Mandap Decor</button>
-        <button class="filter-pill" data-filter="aarti" data-i18n="filter_aarti">Devotion & Aarti</button>
-      </div>
-
-      <!-- 3D Crazy Scroll Reel -->
-      <div class="crazy-reel-wrapper">
-        <button class="crazy-reel-nav-btn prev" aria-label="Previous Slide">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-
-        <div class="crazy-reel-container">
-          <% (typeof glimpsesData !=='undefined' ? glimpsesData : []).forEach(item=> { %>
-            <div class="crazy-reel-card gold-motion-frame gallery-card-item" data-category="<%= item.category %>"
-              data-lightbox data-lightbox-src="<%= item.image %>"
-              data-lightbox-title="<%= item.title %> (Year <%= item.year %>)" data-lightbox-caption="<%= item.desc %>">
-              <div class="card-img-box">
-                <img src="<%= item.image %>" alt="<%= item.title %>" loading="lazy">
-                <div class="year-badge">Year <%= item.year %>
-                </div>
-                <div class="enlarge-hint">
-                  <i class="fa-solid fa-magnifying-glass-plus" style="color: var(--royal-gold); margin-right: 4px;"></i>
-                  <span data-i18n="btn_enlarge">Zoom Image</span>
-                </div>
-              </div>
-              <div class="card-content">
-                <h4 class="card-title">
-                  <%= item.title %>
-                </h4>
-                <p class="card-subtitle">
-                  <%= item.theme %>
-                </p>
-              </div>
-            </div>
-            <% }); %>
-        </div>
-
-        <button class="crazy-reel-nav-btn next" aria-label="Next Slide">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
-
-      <div style="text-align: center; margin-top: 3rem;">
-        <a href="/photo-booth" class="btn btn-primary" data-i18n="btn_view_decade_all">
-          View All 10 Years Retrospective <i class="bi bi-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-     CHAPTER VII: COMMUNITY (Social Work)
-     ========================================================================== -->
-  <section style="background: var(--bg-cream); padding: 6rem 0; border-bottom: 1px solid var(--border-gold);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge" data-i18n="social_section_tag">COMMUNITY SERVICES</span>
-        <h2 class="section-title" data-i18n="social_section_title">Social Work & Seva Initiatives</h2>
-        <p class="section-subtitle social-section-subtitle" data-i18n="social_section_sub">
-          Serving humanity through Annadan Mahaprasad,Blood Donation,Free Healthcare and Student Education Support.
-        </p>
-        <div class="gold-divider"></div>
-      </div>
-
-      <div class="magazine-row">
-        <div class="magazine-img-frame">
-          <img src="/images/malabar_ganpati_5.jpg" alt="Annadan Mahaprasad">
-        </div>
-        <div>
-          <span style="font-size: 0.8rem; font-weight: 800; color: var(--primary-saffron); text-transform: uppercase;"
-            data-i18n="social1_tag">FOOD DISTRIBUTION</span>
-          <h3 style="font-size: 2rem; color: var(--temple-maroon); margin: 0.4rem 0 1rem;" data-i18n="social1_title">
-            Annadan Mahaprasad Seva Drive</h3>
-          <p style="font-size: 1.02rem; color: var(--text-muted); line-height: 1.8;" data-i18n="social1_desc">
-            Serving hot nutritious meals, fresh breakfast, and purified drinking water to over 50,000+ devotees daily
-            during Ganeshotsav.
-          </p>
-        </div>
-      </div>
-
-      <div class="magazine-row">
-        <div class="magazine-img-frame">
-          <img src="/images/malabar_ganpati_2.jpg" alt="Blood Donation Camp">
-        </div>
-        <div>
-          <span style="font-size: 0.8rem; font-weight: 800; color: var(--primary-saffron); text-transform: uppercase;"
-            data-i18n="social2_tag">HEALTHCARE SEVA</span>
-          <h3 style="font-size: 2rem; color: var(--temple-maroon); margin: 0.4rem 0 1rem;" data-i18n="social2_title">
-            Grand Blood Donation & Medical Camp</h3>
-          <p style="font-size: 1.02rem; color: var(--text-muted); line-height: 1.8;" data-i18n="social2_desc">
-            Collecting 500+ blood units annually in partnership with KEM & Nair Hospitals alongside free healthcare
-            checkup camps.
-          </p>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 2rem;">
-        <a href="/social-work" class="btn btn-outline" data-i18n="btn_all_social">
-          View All Social Initiatives <i class="bi bi-arrow-right"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-     CHAPTER VIII: SERVICE & SEVA (Donation CTA)
-     ========================================================================== -->
-  <section
-    style="background: var(--temple-maroon); color: var(--bg-ivory); padding: 6rem 0; border-bottom: 3px solid var(--royal-gold); text-align: center;">
-    <div class="container" style="max-width: 900px;">
-      <span class="section-badge"
-        style="background: rgba(212, 175, 55, 0.2); color: var(--gold-soft); border-color: var(--royal-gold);"
-        data-i18n="donate_section_tag">
-        SACRED CONTRIBUTION
-      </span>
-      <h2 style="font-size: 2.6rem; color: var(--gold-soft); margin-top: 0.5rem; margin-bottom: 1.2rem;"
-        data-i18n="donate_section_title">
-        Support Malabar Hill Cha Raja Seva
-      </h2>
-      <p style="font-size: 1.12rem; color: #E5E7EB; line-height: 1.85; margin-bottom: 2.5rem;"
-        data-i18n="donate_section_sub">
-        Your contributions support community welfare,free meals,and mandap arrangements.
-        All donations are 50% Tax Exempt under Section 80G.
-      </p>
-
-      <a href="/donate" class="btn btn-donate-square"
-        style="background: linear-gradient(135deg, #C9A227 0%, #E8C766 100%); color: #4A0E0E !important; border: none; font-weight: 800; border-radius: 12px !important;">
-        <span data-i18n="nav_donate">Donate Now</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-     CHAPTER IX: PILGRIMAGE & LOCATION
-     ========================================================================== -->
-  <section style="background: var(--bg-ivory); padding: 6rem 0;">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge" data-i18n="location_tag">MANDAP LOCATION & CONTACT</span>
-        <h2 class="section-title" data-i18n="location_title">Mandap Darshan Location & Map</h2>
-        <p class="section-subtitle" data-i18n="location_sub">
-          Bhaji Galli, Shankar Sheth Road, Grant Road, Mumbai - 400007.
-        </p>
-        <div class="gold-divider"></div>
-      </div>
-
-      <div class="grid-2" style="align-items: center; gap: 3rem;">
-        <div
-          style="background: #FFFFFF; border: 2px solid var(--border-gold); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="color: var(--temple-maroon); font-size: 1.6rem; margin-bottom: 1.2rem;"
-            data-i18n="contact_box_title">Contact Information</h3>
-          <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;" data-i18n="contact_address">
-            <i class="fa-solid fa-location-dot" style="color: var(--primary-saffron); margin-right: 10px;"></i>
-            Bhaji Galli, Shankar Sheth Road, Grant Road, Mumbai - 400007.
-          </p>
-          <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;" data-i18n="contact_reg">
-            <i class="fa-solid fa-file-shield" style="color: var(--primary-saffron); margin-right: 10px;"></i>
-            Reg No: E-3892 Mumbai (80G Tax Exempt Certified)
-          </p>
-
-          <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-            <a href="https://www.youtube.com/@MalabarHillChaRaja-e2z" target="_blank" rel="noopener noreferrer"
-              class="btn btn-outline" style="font-size: 0.85rem;">
-              <i class="fa-brands fa-youtube" style="color: #FF0000; margin-right: 6px;"></i> YouTube
-            </a>
-            <a href="https://www.facebook.com/malabarhillcharaja" target="_blank" rel="noopener noreferrer" class="btn btn-outline"
-              style="font-size: 0.85rem;">
-              <i class="fa-brands fa-facebook" style="color: #1877F2; margin-right: 6px;"></i> Facebook
-            </a>
-          </div>
-        </div>
-
-        <div
-          style="height: 380px; border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--royal-gold); box-shadow: var(--shadow-md);">
-          <iframe src="https://www.google.com/maps?q=Bhaji%20Galli%2C%20Shankar%20Sheth%20Road%2C%20Grant%20Road%2C%20Mumbai%20400007&output=embed"
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <%- include('partials/footer') %>
+<%- include('partials/footer') %>
