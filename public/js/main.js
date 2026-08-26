@@ -4,6 +4,15 @@
  * Official Mandal: Shree Bal Gopal Ganeshutsav Mandal
  */
 
+window.addEventListener('error', function(e) {
+  try {
+    var errDiv = document.createElement('div');
+    errDiv.style.cssText = 'position:fixed;top:0;left:0;width:100%;background:#ff0055;color:#fff;z-index:999999;padding:15px;font-family:monospace;font-size:14px;border-bottom:3px solid #000;';
+    errDiv.innerHTML = '<strong>JS Error:</strong> ' + e.message + ' at ' + e.filename + ':' + e.lineno;
+    document.body.appendChild(errDiv);
+  } catch(err) {}
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile Navigation Menu Toggle
   const mobileToggle = document.getElementById('mobileToggle');
@@ -209,24 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // GANESHOTSAV 3D RETRO FLIP-CLOCK COUNTDOWN TIMER
   // ==========================================================================
-  const countdownTarget = new Date('2026-09-14T00:00:00+05:30').getTime();
-  const countdownElements = {
-    days: document.getElementById('countDays'),
-    hours: document.getElementById('countHours'),
-    mins: document.getElementById('countMins'),
-    secs: document.getElementById('countSecs')
-  };
-  const countdownFinished = document.getElementById('countdownFinished');
+  const countdownTarget = new Date(2026, 8, 14, 0, 0, 0).getTime();
 
-  function animateCountdownUnit(key, value) {
-    const targetEl = countdownElements[key];
-    const parentEl = targetEl?.closest('.flip-clock-unit');
-    if (!targetEl) return;
-
-    const previousValue = targetEl.dataset.value || '';
+  function animateCountdownUnit(el, value) {
+    if (!el) return;
+    const parentEl = el.closest('.flip-clock-unit');
+    const previousValue = el.dataset.value || '';
     if (previousValue !== value) {
-      targetEl.textContent = value;
-      targetEl.dataset.value = value;
+      el.textContent = value;
+      el.dataset.value = value;
       if (parentEl) {
         parentEl.classList.remove('fade-update');
         void parentEl.offsetWidth;
@@ -238,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateCountdown() {
     const now = Date.now();
     const diff = countdownTarget - now;
+    const countdownFinished = document.getElementById('countdownFinished');
     if (diff <= 0 && countdownFinished) {
       countdownFinished.hidden = false;
       document.querySelector('.flip-clock-grid')?.setAttribute('hidden', '');
@@ -251,15 +252,16 @@ document.addEventListener('DOMContentLoaded', () => {
       secs: String(Math.floor((safeDiff % 60000) / 1000)).padStart(2, '0')
     };
 
-    Object.entries(values).forEach(([key, value]) => animateCountdownUnit(key, value));
+    animateCountdownUnit(document.getElementById('countDays'), values.days);
+    animateCountdownUnit(document.getElementById('countHours'), values.hours);
+    animateCountdownUnit(document.getElementById('countMins'), values.mins);
+    animateCountdownUnit(document.getElementById('countSecs'), values.secs);
   }
 
   const startCountdown = () => {
-    if (Object.values(countdownElements).some(Boolean)) {
-      updateCountdown();
-      window.clearInterval(window.countdownTimer);
-      window.countdownTimer = window.setInterval(updateCountdown, 1000);
-    }
+    updateCountdown();
+    window.clearInterval(window.countdownTimer);
+    window.countdownTimer = window.setInterval(updateCountdown, 1000);
   };
 
   if (document.readyState === 'loading') {
