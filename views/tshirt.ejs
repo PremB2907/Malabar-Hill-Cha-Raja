@@ -86,13 +86,11 @@
 
             <div>
               <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
-                रंग निवडा (Color) *
+                टी-शर्टचा रंग (Color)
               </label>
-              <select id="tshirtColor" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
-                <option value="Official Cream" selected>अधिकृत क्रीम (Cream Polo & Green Collar)</option>
-                <option value="Royal Maroon">रॉयल मरून (Royal Maroon)</option>
-                <option value="Saffron">भगवा (Saffron)</option>
-              </select>
+              <div style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem; background: #f8f5f0; color: var(--text-main);">
+                रॉयल मरून (Royal Maroon)
+              </div>
             </div>
           </div>
 
@@ -166,7 +164,6 @@
           body: JSON.stringify({
             quantity: qty,
             size: document.getElementById('tshirtSize').value,
-            color: document.getElementById('tshirtColor').value,
             buyer_name: document.getElementById('buyerName').value.trim(),
             phone: document.getElementById('buyerPhone').value.trim()
           })
@@ -204,7 +201,6 @@
                   buyer_name: document.getElementById('buyerName').value.trim(),
                   phone: document.getElementById('buyerPhone').value.trim(),
                   size: document.getElementById('tshirtSize').value,
-                  color: document.getElementById('tshirtColor').value,
                   quantity: qty,
                   total_amount: qty * 320,
                   address: addressVal,

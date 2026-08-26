@@ -16,7 +16,7 @@ module.exports = {
   // Create Razorpay Payment Order for T-Shirt
   async createPaymentOrder(req, res) {
     try {
-      const { quantity, size, color, buyer_name, phone } = req.body;
+      const { quantity, size, buyer_name, phone } = req.body;
       const qty = parseInt(quantity, 10) || 1;
       const pricePerUnit = 320;
       const totalAmount = qty * pricePerUnit;
@@ -40,11 +40,11 @@ module.exports = {
   async confirmTshirtOrder(req, res) {
     try {
       const {
-        receipt_no, buyer_name, phone, email, size, color, quantity, total_amount, address,
+        receipt_no, buyer_name, phone, email, size, quantity, total_amount, address,
         payment_id, order_id, signature
       } = req.body;
 
-      if (!buyer_name || !phone || !size || !color || !quantity || !total_amount) {
+      if (!buyer_name || !phone || !size || !quantity || !total_amount) {
         return res.status(400).json({ success: false, message: 'Missing required T-Shirt order details.' });
       }
 
@@ -63,7 +63,7 @@ module.exports = {
         phone: phone.trim(),
         email: (email || '').trim(),
         size,
-        color,
+        color: 'Royal Maroon',
         quantity: parseInt(quantity, 10),
         total_amount: parseFloat(total_amount),
         address: (address || '').trim(),
