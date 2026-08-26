@@ -573,7 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
       subhead: 'आरोग्य संकल्प',
       title: 'आरोग्य संकल्प व सुवर्ण पदकमयी रूप',
       desc: 'कोरोना महामारीच्या काळात मंडळाने भव्य सामाजिक आरोग्य संकल्प राबवला. ५००+ युनिट्स रक्तदान आणि गरजू कुटुंबांना मोफत रेशन व वैद्यकीय सुरक्षा संच पुरवले गेले.',
-      image: '/images/malabar_ganpati_2.jpg',
+      image: '/images/malabar_ganpati_6.jpg',
       feat1: 'रक्तदान: ५००+ युनिट्स',
       feat2: 'आरोग्य: वैद्यकीय मदत',
       feat3: 'सेवा: कुटुंब रेशन संच'
@@ -655,9 +655,9 @@ document.addEventListener('DOMContentLoaded', () => {
           '2023': { title: 'मयूरपंख कमान आगमन सोहळा', theme: 'संकल्पना: Royal Heritage Court Decor', desc: 'मयुरासनी राजेशाही कमान आणि आगमन सोहळ्यातील श्रींचे भव्य रूप दर्शन.', img: '/images/malabar_ganpati_3.jpg', badge: 'वर्ष २०२३' },
           '2022': { title: 'श्री मुख दर्शन व सुवर्ण मुकुट', theme: 'संकल्पना: Tradition of Pure Devotion', desc: 'विलोभनीय हास्य, दिव्य नयन आणि सुवर्ण मुकुटातील १८ फुटी श्री मूर्ती रूप.', img: '/images/malabar_ganpati_4.jpg', badge: 'वर्ष २०२२' },
           '2021': { title: 'गर्भगृह पुष्प शृंगार दर्शन', theme: 'संकल्पना: Royal Velvet & Lotus Geometry', desc: '५०००+ ताजी फुले व जांभळ्या रेशमी पितांबरातील गर्भगृह शृंगार रूप.', img: '/images/malabar_ganpati_5.jpg', badge: 'वर्ष २०२१' },
-          '2020': { title: 'आरोग्य संकल्प व सुवर्ण पदकमयी रूप', theme: 'संकल्पना: Arogya Seva & Blood Drive', desc: 'अखंड रक्तदान आणि आरोग्य शिबीरांच्या संकल्पातील सुवर्ण पदकमयी रूप.', img: '/images/malabar_ganpati_5.jpg', badge: 'वर्ष २०२०' },
-          '2018': { title: 'राजवाडा महामंडप व सुवर्ण मेघडंबरी', theme: 'संकल्पना: Fort Raigad & Palace Architecture', desc: 'भव्य मराठा राजवाडा देखावा आणि सुवर्ण मेघडंबरीतील विलोभनीय रूप.', img: '/images/malabar_ganpati_2.jpg', badge: 'वर्ष २०१८' },
-          '1973': { title: 'मंडळ स्थापना व प्रथम श्री स्थापना', theme: 'संकल्पना: Establishment & Sacred Foundation', desc: 'श्री बाल गोपाल गणेशोत्सव मंडळ भाजी गल्ली, शंकर शेठ रोड, ग्रँट रोड येथील रहिवाशांनी एकत्रित येऊन स्थापन केलेली श्रींची प्रथम प्रतिष्ठापना.', img: '/images/malabar_ganpati_4.jpg', badge: 'वर्ष १९७३' }
+          '2020': { title: 'आरोग्य संकल्प व सुवर्ण पदकमयी रूप', theme: 'संकल्पना: Arogya Seva & Blood Drive', desc: 'अखंड रक्तदान आणि आरोग्य शिबीरांच्या संकल्पातील सुवर्ण पदकमयी रूप.', img: '/images/malabar_ganpati_6.jpg', badge: 'वर्ष २०२०' },
+          '2018': { title: 'राजवाडा महामंडप व सुवर्ण मेघडंबरी', theme: 'संकल्पना: Fort Raigad & Palace Architecture', desc: 'भव्य मराठा राजवाडा देखावा आणि सुवर्ण मेघडंबरीतील विलोभनीय रूप.', img: '/images/malabar_hero_2.jpg', badge: 'वर्ष २०१८' },
+          '1973': { title: 'मंडळ स्थापना व प्रथम श्री स्थापना', theme: 'संकल्पना: Establishment & Sacred Foundation', desc: 'श्री बाल गोपाल गणेशोत्सव मंडळ भाजी गल्ली, शंकर शेठ रोड, ग्रँट रोड येथील रहिवाशांनी एकत्रित येऊन स्थापन केलेली श्रींची प्रथम प्रतिष्ठापना.', img: '/images/malabar_hero_3.jpg', badge: 'वर्ष १९७३' }
         };
 
         const yearDetailsEn = {
@@ -666,9 +666,9 @@ document.addEventListener('DOMContentLoaded', () => {
           '2023': { title: 'Peacock Feather Arch — Arrival Ceremony', theme: 'Theme: Royal Heritage Court Decor', desc: 'A grand peacock-throne arch and magnificent procession arrival form for the divine idol.', img: '/images/malabar_ganpati_3.jpg', badge: 'Year 2023' },
           '2022': { title: 'Divine Face & Golden Crown Darshan', theme: 'Theme: Tradition of Pure Devotion', desc: 'Enchanting smile, radiant eyes, and a golden crown — the 18-foot idol in full divine glory.', img: '/images/malabar_ganpati_4.jpg', badge: 'Year 2022' },
           '2021': { title: 'Sanctum Floral Adornment Darshan', theme: 'Theme: Royal Velvet & Lotus Geometry', desc: '5000+ fresh flowers and a royal purple silk pitambar — a breathtaking sanctum adornment.', img: '/images/malabar_ganpati_5.jpg', badge: 'Year 2021' },
-          '2020': { title: 'Health Pledge & Golden Medallion Form', theme: 'Theme: Arogya Seva & Blood Drive', desc: 'Continuous blood donation and health camp seva — honoured with a golden medallion idol form.', img: '/images/malabar_ganpati_5.jpg', badge: 'Year 2020' },
-          '2018': { title: 'Royal Mandap & Golden Canopy', theme: 'Theme: Fort Raigad & Palace Architecture', desc: 'Grand Maratha palace-style set and a breathtaking golden canopy mandap decor.', img: '/images/malabar_ganpati_2.jpg', badge: 'Year 2018' },
-          '1973': { title: 'Mandal Founded & First Idol Consecration', theme: 'Theme: Establishment & Sacred Foundation', desc: 'Residents of Bhaji Galli, Shankar Sheth Road, Grant Road united to establish the Sarvajanik Ganeshotsav Mandal and first divine installation.', img: '/images/malabar_ganpati_4.jpg', badge: 'Year 1973' }
+          '2020': { title: 'Health Pledge & Golden Medallion Form', theme: 'Theme: Arogya Seva & Blood Drive', desc: 'Continuous blood donation and health camp seva — honoured with a golden medallion idol form.', img: '/images/malabar_ganpati_6.jpg', badge: 'Year 2020' },
+          '2018': { title: 'Royal Mandap & Golden Canopy', theme: 'Theme: Fort Raigad & Palace Architecture', desc: 'Grand Maratha palace-style set and a breathtaking golden canopy mandap decor.', img: '/images/malabar_hero_2.jpg', badge: 'Year 2018' },
+          '1973': { title: 'Mandal Founded & First Idol Consecration', theme: 'Theme: Establishment & Sacred Foundation', desc: 'Residents of Bhaji Galli, Shankar Sheth Road, Grant Road united to establish the Sarvajanik Ganeshotsav Mandal and first divine installation.', img: '/images/malabar_hero_3.jpg', badge: 'Year 1973' }
         };
 
         const yearDetails = lang === 'mr' ? yearDetailsMr : yearDetailsEn;
