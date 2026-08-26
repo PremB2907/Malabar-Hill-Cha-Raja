@@ -711,9 +711,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const revealElements = document.querySelectorAll('.scroll-reveal');
+  const scrollytellingElements = document.querySelectorAll('.scroll-reveal');
   
-  if (revealElements.length > 0) {
+  if (scrollytellingElements.length > 0) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -727,7 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
       rootMargin: '0px 0px -30px 0px'
     });
     
-    revealElements.forEach((el) => {
+    scrollytellingElements.forEach((el) => {
       revealObserver.observe(el);
     });
   }
