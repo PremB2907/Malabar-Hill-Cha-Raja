@@ -8,21 +8,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap');
 
 :root {
-  --primary-saffron: #FF5E00;
-  --saffron-dark: #C84600;
-  --saffron-light: #FFEBE0;
+  --primary-saffron: #FF1D58;
+  --saffron-dark: #C40033;
+  --saffron-light: #FFEBF0;
 
-  --temple-maroon: #D60024;
+  --temple-maroon: #0049B7;
   --maroon-dark: #0D0E10;
-  --maroon-soft: #FF1A40;
+  --maroon-soft: #F75990;
 
-  --royal-gold: #FFE600;
-  --gold-dark: #D4B000;
-  --gold-soft: #FFFCC2;
-  --copper-accent: #00E5C9;
+  --royal-gold: #FFF685;
+  --gold-dark: #D1C63F;
+  --gold-soft: #FFFDF0;
+  --copper-accent: #00DDFF;
 
-  --bg-ivory: #FFE600;
-  --bg-cream: #FFF176;
+  --bg-ivory: #FFF685;
+  --bg-cream: #FFFCC2;
   --bg-white: #FFFFFF;
   --bg-dark: #0D0E10;
   --bg-charcoal: #050607;
@@ -30,7 +30,7 @@
   --text-main: #0D0E10;
   --text-muted: #2E3035;
   --text-light: #525660;
-  --text-inverse: #FFE600;
+  --text-inverse: #FFF685;
 
   --border-gold: 3px solid #0D0E10;
   --border-subtle: 2px solid #0D0E10;
@@ -494,8 +494,8 @@ a:hover {
 }
 
 .home-release .release-countdown .flip-val {
-  color: #FFFFFF !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, .28);
+  color: #0D0E10 !important;
+  text-shadow: none !important;
 }
 
 .mandal-top-meta-actions {

@@ -170,34 +170,10 @@ def send_donation_sms(donation):
     msg = f"Om Sai Ram! Thank you {donation.get('donor_name')} for your generous donation of Rs. {donation.get('amount')} towards {donation.get('category')}. Receipt No: {donation.get('receipt_no')}. - Malabar Hill Cha Raja"
     return send_sms(donation.get('phone'), msg)
 
-# Background simulation for live yatra updates (Node-Cron logic)
+# Background simulation for live yatra updates (Disabled to save Google Sheets API quota)
 def start_cron_simulation(db_conn):
-    def run_job():
-        time.sleep(10)  # Delay first run slightly
-        while True:
-            try:
-                status = db_conn.get_yatra_status()
-                if status:
-                    distance = min(
-                        int(status.get('total_distance_km', 100)),
-                        int(status.get('distance_covered_km', 100)) + 1
-                    )
-                    meals = int(status.get('meals_served_today', 18500)) + random.randint(10, 35)
-                    
-                    db_conn.update_yatra_status({
-                        'distance_covered_km': distance,
-                        'meals_served_today': meals,
-                        'last_updated': datetime.now().isoformat()
-                    })
-                    db_conn.add_log('CRON', f"Live Yatra status updated. Distance: {distance} km, Meals: {meals}")
-            except Exception as e:
-                print(f"⚠️ Cron background simulation error: {e}")
-            time.sleep(900)  # 15 minutes
-            
-    thread = threading.Thread(target=run_job, daemon=True)
-    thread.start()
+    pass
 
-import threading
 start_cron_simulation(db)
 
 # Middleware for language localization

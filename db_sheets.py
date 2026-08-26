@@ -405,14 +405,34 @@ class GoogleSheetsDB:
     def get_offline_tshirt_orders(self):
         return self.get_offline_records("tshirt")
 
-    # YATRA STATUS
     def get_yatra_status(self):
         ws = self._get_worksheet("yatra_status")
         records = ws.get_all_records()
         if not records:
             self.init_db()
             records = ws.get_all_records()
-        return records[0]
+        status = records[0]
+        
+        # Calculate yatra progression dynamically in-memory based on elapsed time to save Google Drive API quota
+        try:
+            from datetime import datetime
+            last_updated_str = status.get('last_updated', '')
+            if last_updated_str:
+                last_updated = datetime.fromisoformat(last_updated_str)
+                elapsed_seconds = (datetime.now() - last_updated).total_seconds()
+                if elapsed_seconds > 0:
+                    intervals = int(elapsed_seconds / 900)  # 15 minutes intervals
+                    if intervals > 0:
+                        total_dist = int(status.get('total_distance_km', 100))
+                        base_dist = int(status.get('distance_covered_km', 100))
+                        status['distance_covered_km'] = min(total_dist, base_dist + intervals)
+                        
+                        base_meals = int(status.get('meals_served_today', 18500))
+                        status['meals_served_today'] = base_meals + (intervals * 22)
+        except Exception as e:
+            print(f"⚠️ Yatra simulation parsing error: {e}")
+            
+        return status
 
     def update_yatra_status(self, status_data):
         ws = self._get_worksheet("yatra_status")
