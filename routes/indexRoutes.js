@@ -43,7 +43,7 @@ router.post('/advertise/enquire', async (req, res) => {
 });
 
 router.get('/dbt', (req, res) => {
-  res.render('dbt', { title: 'Direct Bank Transfer | Malabar Hill Cha Raja', activeTab: 'dbt' });
+  res.render('dbt', { title: 'Direct Bank Transfer | Malabar Hill Cha Raja', activeTab: 'dbt', query: req.query });
 });
 
 // Contact Us Page (With Embedded Google Maps)

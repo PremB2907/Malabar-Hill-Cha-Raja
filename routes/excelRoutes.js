@@ -18,6 +18,7 @@ router.get('/admin/excel', adminController.requireAuth, excelController.renderEx
 router.post('/admin/excel/upload', adminController.requireAuth, upload.single('excel_file'), excelController.uploadExcel);
 router.post('/admin/excel/delete/:id', adminController.requireAuth, excelController.deleteSheet);
 router.get('/admin/excel/export', adminController.requireAuth, excelController.exportExcel);
+router.get('/admin/excel/export-dbt', adminController.requireAuth, excelController.exportDbtReceipts);
 router.get('/admin/excel/export-combined', adminController.requireAuth, excelController.exportCombined);
 
 module.exports = router;

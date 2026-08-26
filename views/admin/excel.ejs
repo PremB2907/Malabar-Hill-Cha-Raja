@@ -84,6 +84,33 @@
     <div class="card-temple" style="padding:2rem;margin-bottom:2rem;">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
         <div>
+          <h2 style="color:var(--temple-maroon);margin:0;">Direct Bank Transfer Receipts</h2>
+          <p style="color:var(--text-muted);margin:.4rem 0 0;">Receipts uploaded by devotees. Status remains pending until the Mandal verifies the transfer.</p>
+        </div>
+        <a href="/admin/excel/export-dbt" class="btn btn-primary"><i class="fa-solid fa-file-excel"></i> Download MitramSolutions Excel</a>
+      </div>
+      <div style="overflow-x:auto;margin-top:1.2rem;">
+        <table style="width:100%;border-collapse:collapse;min-width:900px;">
+          <thead><tr style="background:var(--temple-maroon);color:var(--gold-soft);">
+            <th style="padding:10px;text-align:left;">Reference ID</th><th style="padding:10px;text-align:left;">Name</th><th style="padding:10px;text-align:left;">Phone</th><th style="padding:10px;text-align:left;">Amount</th><th style="padding:10px;text-align:left;">UTR / Transaction Ref</th><th style="padding:10px;text-align:left;">Status</th><th style="padding:10px;text-align:left;">Receipt</th>
+          </tr></thead>
+          <tbody>
+          <% if (!dbtReceipts.length) { %>
+            <tr><td colspan="7" style="padding:1.5rem;text-align:center;color:var(--text-muted);">No DBT receipts uploaded yet.</td></tr>
+          <% } %>
+          <% dbtReceipts.forEach(receipt => { %>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:9px;font-weight:700;"><%= receipt.reference_id %></td><td style="padding:9px;"><%= receipt.donor_name %></td><td style="padding:9px;"><%= receipt.phone %></td><td style="padding:9px;font-weight:700;">₹ <%= (parseFloat(receipt.amount)||0).toLocaleString('en-IN') %></td><td style="padding:9px;"><%= receipt.transaction_ref %></td><td style="padding:9px;"><%= receipt.status %></td><td style="padding:9px;"><a href="/admin/dbt-receipt/<%= receipt.id %>" class="btn btn-outline" style="padding:4px 9px;font-size:.8rem;">Download</a></td>
+            </tr>
+          <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card-temple" style="padding:2rem;margin-bottom:2rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div>
           <h2 style="color:var(--temple-maroon);margin:0;">Uploaded Committee Sheets</h2>
           <p style="color:var(--text-muted);margin:.4rem 0 0;">Open a sheet to see every original column and row.</p>
         </div>

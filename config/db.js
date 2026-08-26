@@ -193,6 +193,23 @@ async function createTables(pool) {
     );
   `;
 
+  const createDbtReceiptsTable = `
+    CREATE TABLE IF NOT EXISTS dbt_receipts (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      reference_id VARCHAR(40) UNIQUE NOT NULL,
+      donor_name VARCHAR(100) NOT NULL,
+      phone VARCHAR(20) NOT NULL,
+      email VARCHAR(100),
+      amount DECIMAL(10,2) NOT NULL,
+      transaction_ref VARCHAR(100) NOT NULL,
+      original_filename VARCHAR(255) NOT NULL,
+      stored_filename VARCHAR(255) NOT NULL,
+      file_path VARCHAR(500) NOT NULL,
+      status VARCHAR(30) DEFAULT 'PENDING VERIFICATION',
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `;
+
   const createOfflineSheetsTable = `
     CREATE TABLE IF NOT EXISTS offline_excel_sheets (
       id INT AUTO_INCREMENT PRIMARY KEY,
@@ -225,6 +242,7 @@ async function createTables(pool) {
     await pool.query('ALTER TABLE donations ADD COLUMN IF NOT EXISTS gross_amount DECIMAL(10,2) NOT NULL DEFAULT 0');
     await pool.query('ALTER TABLE donations ADD COLUMN IF NOT EXISTS net_amount DECIMAL(10,2) NOT NULL DEFAULT 0');
     await pool.query(createTshirtOrdersTable);
+    await pool.query(createDbtReceiptsTable);
     await pool.query(createOfflineSheetsTable);
     await pool.query(createOfflineRowsTable);
     console.log('✅ MySQL schema initialized.');
@@ -370,6 +388,49 @@ module.exports = {
     } catch (err) {
       return mockStore.tshirt_orders || [];
     }
+  },
+
+  async getDbtReceipts() {
+    if (useMock) return mockStore.dbt_receipts || [];
+    try {
+      const [rows] = await dbPool.query('SELECT * FROM dbt_receipts ORDER BY created_at DESC');
+      return rows;
+    } catch (err) {
+      return mockStore.dbt_receipts || [];
+    }
+  },
+
+  async getDbtReceiptById(id) {
+    if (useMock) return (mockStore.dbt_receipts || []).find(receipt => Number(receipt.id) === Number(id));
+    try {
+      const [rows] = await dbPool.query('SELECT * FROM dbt_receipts WHERE id = ?', [id]);
+      return rows[0] || null;
+    } catch (err) {
+      return (mockStore.dbt_receipts || []).find(receipt => Number(receipt.id) === Number(id));
+    }
+  },
+
+  async createDbtReceipt(receiptData) {
+    const referenceId = `DBT-${new Date().getFullYear()}-${Date.now().toString(36).toUpperCase()}`;
+    const data = { reference_id: referenceId, ...receiptData };
+    if (useMock) {
+      const receipt = { id: (mockStore.dbt_receipts || []).length + 1, ...data, created_at: new Date() };
+      mockStore.dbt_receipts = mockStore.dbt_receipts || [];
+      mockStore.dbt_receipts.unshift(receipt);
+      return receipt;
+    }
+    const query = `
+      INSERT INTO dbt_receipts (reference_id, donor_name, phone, email, amount, transaction_ref, original_filename, stored_filename, file_path, status)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    const values = [data.reference_id, data.donor_name, data.phone, data.email || '', data.amount, data.transaction_ref, data.original_filename, data.stored_filename, data.file_path, data.status];
+    const [result] = await dbPool.query(query, values);
+    return { id: result.insertId, ...data, created_at: new Date() };
+  },
+
+  async removeDbtReceiptFile(filePath) {
+    const fs = require('fs/promises');
+    try { await fs.unlink(filePath); } catch (err) {}
   },
 
   async getOfflineExcelSheets() {

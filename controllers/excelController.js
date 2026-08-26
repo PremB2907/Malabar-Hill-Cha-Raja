@@ -119,6 +119,7 @@ module.exports = {
       const sheets = await db.getOfflineExcelSheets();
       const onlineDonations = await db.getDonations();
       const onlineTshirtOrders = await db.getTshirtOrders();
+      const dbtReceipts = await db.getDbtReceipts();
       const selectedSheetId = req.query.sheet ? Number(req.query.sheet) : null;
       const selectedSheet = selectedSheetId ? sheets.find(s => Number(s.id) === selectedSheetId) : null;
       const selectedRows = selectedSheet ? await db.getOfflineExcelRows(selectedSheet.id) : [];
@@ -129,6 +130,7 @@ module.exports = {
         sheets,
         onlineDonations,
         onlineTshirtOrders,
+        dbtReceipts,
         selectedSheet,
         selectedRows,
         query: req.query,
@@ -219,6 +221,32 @@ module.exports = {
     } catch (err) {
       console.error('Excel export error:', err);
       res.status(500).send(`Excel export error: ${err.message}`);
+    }
+  },
+
+  async exportDbtReceipts(req, res) {
+    try {
+      const receipts = await db.getDbtReceipts();
+      const workbook = new ExcelJS.Workbook();
+      workbook.creator = 'Malabar Hill Cha Raja Admin';
+      const worksheet = workbook.addWorksheet('DBT Receipts');
+      worksheet.addRow(['Reference ID', 'Donor Name', 'Phone', 'Email', 'Amount', 'Transaction Reference', 'Uploaded Receipt', 'Status', 'Submitted At']);
+      receipts.forEach(receipt => worksheet.addRow([
+        receipt.reference_id, receipt.donor_name, receipt.phone, receipt.email || '',
+        Number(receipt.amount) || 0, receipt.transaction_ref, receipt.original_filename,
+        receipt.status, receipt.created_at || ''
+      ]));
+      worksheet.getRow(1).font = { bold: true };
+      worksheet.views = [{ state: 'frozen', ySplit: 1 }];
+      worksheet.columns.forEach(column => { column.width = Math.min(Math.max(column.width || 14, 14), 32); });
+
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      res.setHeader('Content-Disposition', 'attachment; filename="mitramsolutions-dbt-receipts.xlsx"');
+      await workbook.xlsx.write(res);
+      res.end();
+    } catch (err) {
+      console.error('DBT export error:', err);
+      res.status(500).send(`DBT export error: ${err.message}`);
     }
   },
 
