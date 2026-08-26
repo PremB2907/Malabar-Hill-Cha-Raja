@@ -48,6 +48,10 @@ module.exports = {
         return res.status(400).json({ success: false, message: 'Missing required T-Shirt order details.' });
       }
 
+      if (!payment_id || !order_id || !signature || [payment_id, order_id, signature].some(value => /(?:^|_)sim(?:_|$)|mock/i.test(value))) {
+        return res.status(400).json({ success: false, message: 'A successful Razorpay payment is required before booking.' });
+      }
+
       const isValidSignature = razorpay.verifyPaymentSignature(order_id, payment_id, signature);
       if (!isValidSignature) {
         return res.status(400).json({ success: false, message: 'Payment verification failed.' });

@@ -160,7 +160,7 @@ async function runTests() {
     passed = false;
   }
 
-  // 4. T-Shirt Order Confirmation
+  // 4. T-Shirt Order Confirmation must reject unpaid/simulated payments
   try {
     const res = await request('POST', '/tshirt/confirm', {
       buyer_name: 'Test Merch Buyer',
@@ -176,10 +176,10 @@ async function runTests() {
       signature: 'sig_sim_test'
     });
     const json = JSON.parse(res.body);
-    if (res.statusCode === 200 && json.success) {
-      console.log(`✅ Passed: POST /tshirt/confirm - Verified & Saved`);
+    if (res.statusCode === 400 && !json.success) {
+      console.log(`✅ Passed: POST /tshirt/confirm - Rejected unpaid payment`);
     } else {
-      console.error(`❌ Failed: POST /tshirt/confirm - Got status ${res.statusCode}, body: ${res.body}`);
+      console.error(`❌ Failed: POST /tshirt/confirm - Expected unpaid payment rejection, got status ${res.statusCode}, body: ${res.body}`);
       passed = false;
     }
   } catch (err) {

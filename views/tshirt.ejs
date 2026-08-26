@@ -1,4 +1,5 @@
 <%- include('partials/header') %>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <section class="page-hero-banner">
   <div class="container">
@@ -158,38 +159,82 @@
         ? deliveryAddressInput.value.trim() 
         : 'Mandap Counter Pickup';
 
-      const payload = {
-        buyer_name: document.getElementById('buyerName').value.trim(),
-        phone: document.getElementById('buyerPhone').value.trim(),
-        size: document.getElementById('tshirtSize').value,
-        color: document.getElementById('tshirtColor').value,
-        quantity: qty,
-        total_amount: qty * 320,
-        address: addressVal,
-        receipt_no: `MCC-TSHIRT-2026-${Math.floor(100 + Math.random() * 900)}`,
-        payment_id: `pay_sim_${Date.now()}`,
-        order_id: `order_sim_${Date.now()}`,
-        signature: `sig_sim_${Date.now()}`
-      };
-
       try {
-        const res = await fetch('/tshirt/confirm', {
+        const orderRes = await fetch('/tshirt/create-order', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({
+            quantity: qty,
+            size: document.getElementById('tshirtSize').value,
+            color: document.getElementById('tshirtColor').value,
+            buyer_name: document.getElementById('buyerName').value.trim(),
+            phone: document.getElementById('buyerPhone').value.trim()
+          })
         });
-        const data = await res.json();
-        if (data.success) {
-          alert('बुकिंग यशस्वी झाले! तुमची पावती डाउनलोड करा.');
-          window.location.href = `/download-tshirt-receipt/${data.receipt_no}`;
-        } else {
-          alert(data.message || 'Error booking tshirt');
+        const orderData = await orderRes.json();
+        if (!orderData.success) {
+          throw new Error(orderData.message || 'Payment initiation failed.');
         }
+
+        const razorpayKey = (orderData.order && orderData.order.key_id) || '<%= typeof razorpayKeyId !== "undefined" ? razorpayKeyId : "" %>';
+        if (typeof window.Razorpay === 'undefined' || !razorpayKey || !orderData.order || orderData.order.is_simulated) {
+          throw new Error('Online payment is currently unavailable. Please try again later.');
+        }
+
+        const rzp = new window.Razorpay({
+          key: razorpayKey,
+          amount: orderData.order.amount,
+          currency: orderData.order.currency || 'INR',
+          name: 'Malabar Hill Cha Raja',
+          description: 'Official T-Shirt Booking',
+          image: '/images/logo.png',
+          order_id: orderData.order.order_id,
+          prefill: {
+            name: document.getElementById('buyerName').value.trim(),
+            contact: document.getElementById('buyerPhone').value.trim()
+          },
+          theme: { color: '#7F1D1D' },
+          handler: async (response) => {
+            try {
+              const confirmRes = await fetch('/tshirt/confirm', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  receipt_no: orderData.receipt_no,
+                  buyer_name: document.getElementById('buyerName').value.trim(),
+                  phone: document.getElementById('buyerPhone').value.trim(),
+                  size: document.getElementById('tshirtSize').value,
+                  color: document.getElementById('tshirtColor').value,
+                  quantity: qty,
+                  total_amount: qty * 320,
+                  address: addressVal,
+                  payment_id: response.razorpay_payment_id,
+                  order_id: response.razorpay_order_id,
+                  signature: response.razorpay_signature
+                })
+              });
+              const data = await confirmRes.json();
+              if (!data.success) throw new Error(data.message || 'Payment verification failed.');
+              alert('बुकिंग यशस्वी झाले! तुमची पावती डाउनलोड करा.');
+              window.location.href = `/download-tshirt-receipt/${data.receipt_no}`;
+            } catch (err) {
+              alert(err.message || 'Payment verification failed.');
+              btn.disabled = false;
+              btn.innerText = 'टी-शर्ट बुकिंग करा व पावती मिळवा';
+            }
+          },
+          modal: {
+            ondismiss: () => {
+              btn.disabled = false;
+              btn.innerText = 'टी-शर्ट बुकिंग करा व पावती मिळवा';
+            }
+          }
+        });
+        rzp.open();
       } catch(err) {
-        alert('Error connecting to server.');
-      } finally {
         btn.disabled = false;
         btn.innerText = 'टी-शर्ट बुकिंग करा व पावती मिळवा';
+        alert(err.message || 'Error connecting to server.');
       }
     });
   });
