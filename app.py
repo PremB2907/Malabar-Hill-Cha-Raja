@@ -21,7 +21,11 @@ app = Flask(__name__, static_folder='public', static_url_path='')
 app.secret_key = os.environ.get('SECRET_KEY', 'malabar_hill_cha_raja_secret_key')
 
 # Setup upload folder for DBT receipts
-UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'receipts', 'dbt')
+# On Vercel, use /tmp folder because the root filesystem is read-only
+if os.environ.get('VERCEL') == '1':
+    UPLOAD_FOLDER = '/tmp/receipts/dbt'
+else:
+    UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'receipts', 'dbt')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
