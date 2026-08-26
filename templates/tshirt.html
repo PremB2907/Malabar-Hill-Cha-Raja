@@ -1,0 +1,239 @@
+{% include 'partials/header.html' %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<section class="page-hero-banner">
+  <div class="container">
+    <span class="section-badge">
+      अधिकृत वस्त्रालंकार
+    </span>
+    <h1>मालाबार हिलचा राजा - टी-शर्ट बुकिंग</h1>
+    <p>
+      श्री बाल गोपाल गणेशोत्सव मंडळ भाजी गल्ली, शंकर शेठ रोड, ग्रँट रोड मंडळाचा अधिकृत कॉटन टी-शर्ट व राजमुद्रित प्रिंट.
+    </p>
+  </div>
+</section>
+
+<section style="background: var(--bg-cream); padding: 5rem 0;">
+  <div class="container">
+    <div class="grid-2" style="align-items: flex-start;">
+      <!-- Product Preview Showcase -->
+      <div class="card-temple" style="text-align: center; padding: 2rem;">
+        <div style="background: #111111; border-radius: var(--radius-md); border: 2px solid var(--royal-gold); padding: 1rem; margin-bottom: 1.5rem;">
+          <img src="/images/malabar_tshirt.png" alt="Official Tshirt Info & Size Chart" style="width: 100%; max-height: 480px; object-fit: contain;">
+        </div>
+
+        <h3 style="font-size: 1.5rem; color: var(--temple-maroon); margin-bottom: 0.5rem;">
+          ऑफिशियल कॉलर टी-शर्ट (Official Collar Polo T-Shirt)
+        </h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+          हाफ कॉलर पोलो टी-शर्ट, सुवर्ण राजमुद्रा व अधिकृत लोगो.
+        </p>
+
+        <div style="display: flex; justify-content: center; gap: 1.5rem; border-top: 1px solid var(--border-subtle); padding-top: 1.2rem;">
+          <div>
+            <span style="font-size: 0.8rem; color: var(--text-light); text-transform: uppercase;">किंमत per T-shirt</span>
+            <h4 style="font-size: 1.8rem; color: var(--temple-maroon); margin: 0;">₹३२०/-</h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking Form -->
+      <div class="card-temple" style="padding: 2.5rem;">
+        <h3 style="font-size: 1.6rem; color: var(--temple-maroon); margin-bottom: 1.5rem; border-bottom: 2px solid var(--royal-gold); padding-bottom: 0.5rem;">
+          टी-शर्ट बुकिंग फॉर्म
+        </h3>
+
+        <form id="tshirtForm">
+          <div style="margin-bottom: 1.2rem;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+              तुमचे संपूर्ण नाव *
+            </label>
+            <input type="text" id="buyerName" required placeholder="नाव टाका" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+          </div>
+
+          <div style="margin-bottom: 1.2rem;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+              मोबाईल नंबर (WhatsApp) *
+            </label>
+            <input type="tel" id="buyerPhone" required placeholder="१० अंकी मोबाईल नंबर" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+          </div>
+
+          <div class="form-grid-2">
+            <div>
+              <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+                साईझ निवडा (Size) *
+              </label>
+              <select id="tshirtSize" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+                <!-- Adult Sizes -->
+                <option value="S (36)">S (Size 36)</option>
+                <option value="M (38)" selected>M (Size 38)</option>
+                <option value="L (40)">L (Size 40)</option>
+                <option value="XL (42)">XL (Size 42)</option>
+                <option value="XXL (44)">XXL (Size 44)</option>
+                <option value="3XL (46)">3XL (Size 46)</option>
+                <option value="4XL (48)">4XL (Size 48)</option>
+                <option value="5XL (50)">5XL (Size 50)</option>
+                <!-- Kids Sizes -->
+                <option value="Kids 22 (1-2 Yrs)">Kids 22 (1-2 Yrs)</option>
+                <option value="Kids 24 (3-4 Yrs)">Kids 24 (3-4 Yrs)</option>
+                <option value="Kids 26 (5-7 Yrs)">Kids 26 (5-7 Yrs)</option>
+                <option value="Kids 28 (8-9 Yrs)">Kids 28 (8-9 Yrs)</option>
+                <option value="Kids 30 (10-12 Yrs)">Kids 30 (10-12 Yrs)</option>
+                <option value="Kids 32 (13-14 Yrs)">Kids 32 (13-14 Yrs)</option>
+                <option value="Kids 34 (15-17 Yrs)">Kids 34 (15-17 Yrs)</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+                टी-शर्टचा रंग (Color)
+              </label>
+              <div style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem; background: #f8f5f0; color: var(--text-main);">
+                रॉयल मरून (Royal Maroon)
+              </div>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div>
+              <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+                संख्या (Qty) *
+              </label>
+              <input type="number" id="tshirtQty" min="1" max="10" value="1" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+                टी-शर्ट मिळण्याची पद्धत *
+              </label>
+              <select id="deliveryType" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem;">
+                <option value="Mandap Counter Pickup">मंडप काउंटरवरून पिकअप (श्री बाल गोपाल गणेशोत्सव मंडळ भाजी गल्ली, शंकर शेठ रोड, ग्रँट रोड)</option>
+                <option value="Home Courier Delivery">होम कूरियर डिलिव्हरी (All India)</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="addressSection" style="margin-bottom: 1.5rem; display: none;">
+            <label style="display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">
+              डिलिव्हरीचा पत्ता (Shipping Address) *
+            </label>
+            <textarea id="deliveryAddress" placeholder="तुमचा संपूर्ण पत्ता पिनकोडसह टाका" style="width: 100%; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); font-size: 0.95rem; min-height: 80px;"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.9rem; font-size: 1.05rem;" id="btnBookSubmit">
+            टी-शर्ट बुकिंग करा व पावती मिळवा <i class="bi bi-bag-check-fill"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const deliveryTypeSelect = document.getElementById('deliveryType');
+    const addressSection = document.getElementById('addressSection');
+    const deliveryAddressInput = document.getElementById('deliveryAddress');
+
+    deliveryTypeSelect.addEventListener('change', () => {
+      if (deliveryTypeSelect.value === 'Home Courier Delivery') {
+        addressSection.style.display = 'block';
+        deliveryAddressInput.required = true;
+      } else {
+        addressSection.style.display = 'none';
+        deliveryAddressInput.required = false;
+      }
+    });
+
+    document.getElementById('tshirtForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('btnBookSubmit');
+      btn.disabled = true;
+      btn.innerText = 'बुकिंग प्रक्रिया सुरू आहे...';
+
+      const qty = parseInt(document.getElementById('tshirtQty').value, 10);
+      const deliveryType = deliveryTypeSelect.value;
+      const addressVal = deliveryType === 'Home Courier Delivery' 
+        ? deliveryAddressInput.value.trim() 
+        : 'Mandap Counter Pickup';
+
+      try {
+        const orderRes = await fetch('/tshirt/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            quantity: qty,
+            size: document.getElementById('tshirtSize').value,
+            buyer_name: document.getElementById('buyerName').value.trim(),
+            phone: document.getElementById('buyerPhone').value.trim()
+          })
+        });
+        const orderData = await orderRes.json();
+        if (!orderData.success) {
+          throw new Error(orderData.message || 'Payment initiation failed.');
+        }
+
+        const razorpayKey = (orderData.order && orderData.order.key_id) || '{{ razorpayKeyId if razorpayKeyId is defined else "" }}';
+        if (typeof window.Razorpay === 'undefined' || !razorpayKey || !orderData.order || orderData.order.is_simulated) {
+          throw new Error('Online payment is currently unavailable. Please try again later.');
+        }
+
+        const rzp = new window.Razorpay({
+          key: razorpayKey,
+          amount: orderData.order.amount,
+          currency: orderData.order.currency || 'INR',
+          name: 'Malabar Hill Cha Raja',
+          description: 'Official T-Shirt Booking',
+          image: '/images/logo.png',
+          order_id: orderData.order.order_id,
+          prefill: {
+            name: document.getElementById('buyerName').value.trim(),
+            contact: document.getElementById('buyerPhone').value.trim()
+          },
+          theme: { color: '#7F1D1D' },
+          handler: async (response) => {
+            try {
+              const confirmRes = await fetch('/tshirt/confirm', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  receipt_no: orderData.receipt_no,
+                  buyer_name: document.getElementById('buyerName').value.trim(),
+                  phone: document.getElementById('buyerPhone').value.trim(),
+                  size: document.getElementById('tshirtSize').value,
+                  quantity: qty,
+                  total_amount: qty * 320,
+                  address: addressVal,
+                  payment_id: response.razorpay_payment_id,
+                  order_id: response.razorpay_order_id,
+                  signature: response.razorpay_signature
+                })
+              });
+              const data = await confirmRes.json();
+              if (!data.success) throw new Error(data.message || 'Payment verification failed.');
+              alert('बुकिंग यशस्वी झाले! तुमची पावती डाउनलोड करा.');
+              window.location.href = `/download-tshirt-receipt/${data.receipt_no}`;
+            } catch (err) {
+              alert(err.message || 'Payment verification failed.');
+              btn.disabled = false;
+              btn.innerText = 'टी-शर्ट बुकिंग करा व पावती मिळवा';
+            }
+          },
+          modal: {
+            ondismiss: () => {
+              btn.disabled = false;
+              btn.innerText = 'टी-शर्ट बुकिंग करा व पावती मिळवा';
+            }
+          }
+        });
+        rzp.open();
+      } catch(err) {
+        btn.disabled = false;
+        btn.innerText = 'टी-शर्ट बुकिंग करा व पावती मिळवा';
+        alert(err.message || 'Error connecting to server.');
+      }
+    });
+  });
+</script>
+
+{% include 'partials/footer.html' %}

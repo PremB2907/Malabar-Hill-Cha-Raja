@@ -1,0 +1,360 @@
+{% include 'partials/header.html' %}
+
+  <style>
+    .committee-hero {
+      background: var(--temple-maroon);
+      color: var(--bg-ivory);
+      padding: 4.5rem 0;
+      border-bottom: 3px solid var(--royal-gold);
+      text-align: center;
+    }
+
+    .committee-hero h1 {
+      font-size: 3rem;
+      color: var(--gold-soft);
+      margin: 0.7rem 0 0;
+    }
+
+    .committee-hero p {
+      font-size: 1.1rem;
+      color: #E5E7EB;
+      max-width: 850px;
+      margin: 1rem auto 0;
+      line-height: 1.8;
+    }
+
+    .committee-year {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--royal-gold);
+      border-radius: 999px;
+      color: var(--gold-soft);
+      background: rgba(212, 175, 55, 0.15);
+      font-weight: 800;
+    }
+
+    .committee-section {
+      background: var(--bg-cream);
+      padding: 5rem 0;
+    }
+
+    .committee-heading {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .committee-heading h2 {
+      font-size: 2.2rem;
+      color: var(--temple-maroon);
+      margin-bottom: 0.5rem;
+    }
+
+    .committee-heading p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .committee-card {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-top: 4px solid var(--royal-gold);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .committee-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .committee-number {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+
+      width: 38px;
+      height: 38px;
+
+      border-radius: 50%;
+
+      background: var(--temple-maroon);
+      color: var(--gold-soft);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .committee-icon {
+      width: 90px;
+      height: 90px;
+
+      border-radius: 50%;
+      border: 3px solid var(--royal-gold);
+
+      background: var(--bg-ivory);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 1.2rem;
+    }
+
+    .committee-icon i {
+      font-size: 2.5rem;
+      color: var(--temple-maroon);
+    }
+
+    /*
+   * IMPORTANT:
+   * Do NOT hide Marathi or English text here.
+   * Both versions are intentionally visible.
+   */
+
+    .committee-name-marathi {
+      font-family: var(--font-mr, "Baloo 2", serif);
+      color: var(--temple-maroon);
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1.5;
+      margin-bottom: 0.25rem;
+    }
+
+    .committee-name-english {
+      color: var(--text-muted);
+      font-family: var(--font-en, "Outfit", sans-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .committee-designation-marathi {
+      color: var(--primary-saffron);
+      font-family: var(--font-mr, "Baloo 2", serif);
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .committee-designation-english {
+      color: var(--text-muted);
+      font-family: var(--font-en, "Outfit", sans-serif);
+      font-size: 0.85rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .committee-divider {
+      width: 70%;
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 0.7rem auto;
+    }
+
+    .committee-note {
+      margin-top: 3.5rem;
+
+      background: #ffffff;
+      border: 2px solid var(--royal-gold);
+      border-radius: var(--radius-lg);
+
+      padding: 2rem;
+
+      text-align: center;
+
+      box-shadow: var(--shadow-sm);
+    }
+
+    .committee-note h3 {
+      color: var(--temple-maroon);
+      margin-bottom: 0.7rem;
+    }
+
+    .committee-note p {
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+
+    @media (max-width: 1000px) {
+
+      .committee-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .committee-hero {
+        padding: 3.5rem 1rem;
+      }
+
+      .committee-hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .committee-section {
+        padding: 3.5rem 0;
+      }
+
+      .committee-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .committee-card {
+        min-height: auto;
+        padding: 1.8rem 1.2rem;
+      }
+
+      .committee-name-marathi {
+        font-size: 1.1rem;
+      }
+
+    }
+  </style>
+
+
+  <!-- ==========================================
+     COMMITTEE HERO
+========================================== -->
+
+  <section class="page-hero-banner">
+    <div class="container">
+      <span class="section-badge">
+        मंडळ नेतृत्व व कार्यकारिणी &nbsp;|&nbsp; Mandal Leadership & Executive Committee
+      </span>
+
+      <h1>
+        कार्यकारिणी समिती <span style="opacity:0.7;">|</span> Executive Committee
+      </h1>
+
+      <div class="committee-year" style="display: inline-block; margin-top: 0.4rem; padding: 0.25rem 0.9rem; border: 1px solid var(--royal-gold); border-radius: 999px; color: var(--gold-soft); background: rgba(212, 175, 55, 0.15); font-size: 0.8rem; font-weight: 800;">
+        सन २०२५–२६ &nbsp;|&nbsp; Year 2025–26
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ==========================================
+     COMMITTEE MEMBERS
+========================================== -->
+
+  <section class="committee-section">
+
+    <div class="container">
+
+
+      <div class="committee-heading">
+
+        <h2>
+          मंडळाचे पदाधिकारी
+          <span style="opacity:0.6;">|</span>
+          Mandal Office Bearers
+        </h2>
+
+        <p>
+          सन २०२५–२६ साठी नियुक्त पदाधिकारी
+          &nbsp;|&nbsp;
+          Office Bearers for the Year 2025–26
+        </p>
+
+        <div class="gold-divider"></div>
+
+      </div>
+
+
+
+      <div class="committee-grid">
+
+
+        {% for member in committeeData %}
+          <div class="committee-card">
+            <!-- NUMBER -->
+            <div class="committee-number">
+              {{ member.number }}
+            </div>
+            <!-- MEMBER ICON -->
+            <div class="committee-icon">
+              <i class="fa-solid fa-user-tie"></i>
+            </div>
+            <!-- MARATHI NAME -->
+            <div class="committee-name-marathi">
+              {{ member.nameMr }}
+            </div>
+            <!-- ENGLISH NAME -->
+            <div class="committee-name-english">
+              {{ member.nameEn }}
+            </div>
+            <div class="committee-divider"></div>
+            <!-- MARATHI DESIGNATION -->
+            <div class="committee-designation-marathi">
+              {{ member.designationMr }}
+            </div>
+            <!-- ENGLISH DESIGNATION -->
+            <div class="committee-designation-english">
+              {{ member.designationEn }}
+            </div>
+          </div>
+        {% endfor %}
+
+
+      </div>
+
+
+
+      <!-- INFORMATION NOTE -->
+
+      <div class="committee-note">
+
+        <h3>
+          मंडळाची कार्यकारिणी
+          <span style="opacity:0.6;">|</span>
+          Executive Committee
+        </h3>
+
+        <p>
+
+          वरील पदाधिकारी मंडळाच्या सन २०२५–२६ च्या कार्यकारिणीचा भाग आहेत.
+
+          <br>
+
+          The above members are part of the Mandal's Executive Committee
+          for the year 2025–26.
+
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  {% include 'partials/footer.html' %}

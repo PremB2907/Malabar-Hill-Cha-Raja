@@ -8,47 +8,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap');
 
 :root {
-  --primary-saffron: #D94A0B;
-  --saffron-dark: #A83208;
-  --saffron-light: #FFF0E6;
+  --primary-saffron: #FF5E00;
+  --saffron-dark: #C84600;
+  --saffron-light: #FFEBE0;
 
-  --temple-maroon: #85061B;
-  --maroon-dark: #4F000D;
-  --maroon-soft: #B01E35;
+  --temple-maroon: #D60024;
+  --maroon-dark: #0D0E10;
+  --maroon-soft: #FF1A40;
 
-  --royal-gold: #FFB703;
-  --gold-dark: #D48C00;
-  --gold-soft: #FFF2C2;
-  --copper-accent: #00A896;
+  --royal-gold: #FFE600;
+  --gold-dark: #D4B000;
+  --gold-soft: #FFFCC2;
+  --copper-accent: #00E5C9;
 
-  --bg-ivory: #FFFDFC;
-  --bg-cream: #FAF4E5;
+  --bg-ivory: #FFE600;
+  --bg-cream: #FFF176;
   --bg-white: #FFFFFF;
-  --bg-dark: #190306;
-  --bg-charcoal: #120003;
+  --bg-dark: #0D0E10;
+  --bg-charcoal: #050607;
 
-  --text-main: #1A0306;
-  --text-muted: #5D4347;
-  --text-light: #856367;
-  --text-inverse: #FFFDFC;
+  --text-main: #0D0E10;
+  --text-muted: #2E3035;
+  --text-light: #525660;
+  --text-inverse: #FFE600;
 
-  --border-gold: rgba(255, 183, 3, 0.4);
-  --border-subtle: rgba(133, 6, 27, 0.1);
+  --border-gold: 3px solid #0D0E10;
+  --border-subtle: 2px solid #0D0E10;
 
-  --brutal-border: 3px solid #101010;
+  --brutal-border: 3px solid #0D0E10;
   --brutal-shadow: 4px 4px 0px var(--primary-saffron);
   --brutal-shadow-lg: 7px 7px 0px var(--temple-maroon);
 
   /* Crisp Elegant & Neo-Brutalist Depth Shadows */
-  --shadow-sm: 0 4px 10px rgba(133, 6, 27, 0.08);
-  --shadow-md: 0 8px 24px rgba(133, 6, 27, 0.12);
-  --shadow-lg: 0 16px 40px rgba(133, 6, 27, 0.18);
-  --shadow-xl: 0 24px 60px rgba(133, 6, 27, 0.24);
+  --shadow-sm: 4px 4px 0px #0D0E10;
+  --shadow-md: 7px 7px 0px #0D0E10;
+  --shadow-lg: 11px 11px 0px #0D0E10;
+  --shadow-xl: 16px 16px 0px #0D0E10;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
-  --radius-full: 9999px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-full: 4px;
 
   --font-en-head: 'Rozha One', 'Cinzel', serif;
   --font-mr-head: 'Baloo 2', sans-serif;
@@ -3363,4 +3363,179 @@ html[data-lang="en"] [data-lang-only="en"] { display: inline !important; }
     background: var(--royal-gold);
     color: var(--maroon-dark);
   }
+}
+
+/* ==========================================================================
+   NEO-BRUTALIST DESIGN SYSTEM OVERRIDES & COMPONENT CLASSES
+   ========================================================================== */
+
+/* Global inputs, textareas, selects brutalist styling */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="file"],
+select,
+textarea {
+  border: 3px solid #0D0E10 !important;
+  border-radius: 0px !important;
+  box-shadow: 3px 3px 0px #0D0E10 !important;
+  background: var(--bg-white) !important;
+  color: var(--text-main) !important;
+  font-family: var(--font-body) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease !important;
+}
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border-color: var(--primary-saffron) !important;
+  box-shadow: 5px 5px 0px #0D0E10 !important;
+  transform: translate(-1px, -1px) !important;
+}
+
+/* Global button overrides */
+.btn,
+.release-button {
+  border: 3px solid #0D0E10 !important;
+  border-radius: 0px !important;
+  box-shadow: 4px 4px 0px #0D0E10 !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease !important;
+}
+.btn:hover,
+.release-button:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 7px 7px 0px #0D0E10 !important;
+}
+.btn-primary,
+.release-button-orange {
+  background: var(--primary-saffron) !important;
+  color: var(--bg-ivory) !important;
+  border-color: #0D0E10 !important;
+}
+.btn-primary:hover,
+.release-button-orange:hover {
+  background: var(--saffron-dark) !important;
+}
+.btn-outline,
+.release-button-light {
+  background: var(--bg-cream) !important;
+  color: var(--temple-maroon) !important;
+  border-color: #0D0E10 !important;
+}
+.btn-outline:hover,
+.release-button-light:hover {
+  background: var(--royal-gold) !important;
+  color: #0D0E10 !important;
+}
+
+/* Section badging overrides */
+.section-badge,
+.release-section-label,
+.release-kicker {
+  background: var(--royal-gold) !important;
+  color: #0D0E10 !important;
+  border: 2px solid #0D0E10 !important;
+  box-shadow: 2px 2px 0px #0D0E10 !important;
+  border-radius: 0px !important;
+  padding: 0.35rem 1rem !important;
+  display: inline-block !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+}
+
+/* Active navigation links brutalist tab styling */
+.nav-link.active,
+.mobile-lang-item .lang-btn.active,
+.lang-switcher-container .lang-btn.active {
+  background: var(--royal-gold) !important;
+  color: #0D0E10 !important;
+  border: 2px solid #0D0E10 !important;
+  box-shadow: 2px 2px 0px #0D0E10 !important;
+  border-radius: 0px !important;
+}
+
+.lang-btn {
+  border: 2px solid transparent !important;
+  border-radius: 0px !important;
+}
+
+/* Cards & panels offsets */
+.card-temple,
+.committee-card,
+.crazy-reel-card {
+  border: 3px solid #0D0E10 !important;
+  border-radius: 0px !important;
+  box-shadow: 5px 5px 0px #0D0E10 !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+.card-temple:hover,
+.committee-card:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 8px 8px 0px #0D0E10 !important;
+}
+
+/* Specific elements on index.html */
+.release-countdown {
+  border: 3px solid #0D0E10 !important;
+  border-radius: 0px !important;
+  box-shadow: 6px 6px 0px #0D0E10 !important;
+  background: var(--maroon-soft) !important;
+}
+.release-countdown .flip-clock-unit {
+  border: 3px solid #0D0E10 !important;
+  border-radius: 0px !important;
+  box-shadow: 3px 3px 0px #0D0E10 !important;
+  background: #FFF8ED !important;
+}
+
+.release-image-frame,
+.release-map {
+  border: 4px solid #0D0E10 !important;
+  box-shadow: 10px 10px 0px #0D0E10 !important;
+}
+
+.release-facts div {
+  border: 3px solid #0D0E10 !important;
+  box-shadow: 4px 4px 0px #0D0E10 !important;
+  background: var(--temple-maroon) !important;
+}
+
+.release-gallery-item {
+  border: 3px solid #0D0E10 !important;
+  box-shadow: 4px 4px 0px #0D0E10 !important;
+}
+.release-gallery-item span {
+  border: 2px solid #0D0E10 !important;
+  box-shadow: 2px 2px 0px #0D0E10 !important;
+  border-radius: 0px !important;
+}
+
+/* Nav Menu Brutalist Border styling */
+.site-header {
+  border-bottom: 4px solid #0D0E10 !important;
+  background: var(--bg-cream) !important;
+  box-shadow: none !important;
+}
+
+/* Tables styling inside dashboards */
+table {
+  border: 3px solid #0D0E10 !important;
+  border-collapse: collapse !important;
+}
+th {
+  background: var(--temple-maroon) !important;
+  color: var(--gold-soft) !important;
+  border: 2px solid #0D0E10 !important;
+  font-weight: 800 !important;
+}
+td {
+  border: 2px solid #0D0E10 !important;
+  background: var(--bg-white) !important;
 }

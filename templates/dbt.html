@@ -1,0 +1,72 @@
+{% include 'partials/header.html' %}
+
+<section class="page-hero-banner">
+  <div class="container">
+    <span class="section-badge">Direct Bank Transfer</span>
+    <h1>देणगीसाठी थेट बँक हस्तांतरण</h1>
+    <p>आपली सेवा थेट मंडळाच्या अधिकृत खात्यात जमा करा. हस्तांतरणानंतर पावती येथे अपलोड करा.</p>
+  </div>
+</section>
+
+<section style="background:var(--bg-cream);padding:4rem 0;">
+  <div class="container" style="max-width:900px;">
+    {% if query and query.success %}
+      <div style="background:#D1FAE5;border:1px solid #6EE7B7;color:#065F46;padding:1rem;border-radius:8px;margin-bottom:1.5rem;">{{ query.success }}</div>
+    {% endif %}
+    {% if query and query.error %}
+      <div style="background:#FEE2E2;border:1px solid #FCA5A5;color:#991B1B;padding:1rem;border-radius:8px;margin-bottom:1.5rem;">{{ query.error }}</div>
+    {% endif %}
+
+    <div class="card-temple" style="padding:2rem;margin-bottom:2rem;">
+      <h2 style="color:var(--temple-maroon);margin-top:0;">Account details</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
+        <div><small>Account name</small><strong>SHREE BAL GOPAL GANESH UTSAV MANDAL</strong></div>
+        <div><small>Bank</small><strong>SVC Co-operative Bank Ltd.</strong></div>
+        <div><small>Account number</small><strong>10090130041974</strong></div>
+        <div><small>IFSC</small><strong>SVCB0000009</strong></div>
+        <div><small>Branch</small><strong>Sleater Road, Mumbai</strong></div>
+        <div><small>Registered address</small><strong>Bhaji Galli, Shankar Sheth Road, Grant Road, Mumbai - 400007</strong></div>
+      </div>
+      <div style="margin-top:2rem;padding:1rem;background:#FFF8E7;border-left:4px solid var(--primary-saffron);">
+        <strong>After transfer:</strong> Upload your payment receipt below. The Mandal admin will review it and contact you if clarification is needed.
+      </div>
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:0;">Verify the account name and IFSC in your banking app before confirming any transfer. Do not share your banking PIN, OTP or password.</p>
+    </div>
+
+    <div class="card-temple" style="padding:2rem;">
+      <h2 style="color:var(--temple-maroon);margin-top:0;">Upload transfer receipt</h2>
+      <form action="/dbt/upload" method="POST" enctype="multipart/form-data">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
+          <div>
+            <label for="donorName" style="font-weight:700;display:block;margin-bottom:.4rem;">Full name *</label>
+            <input id="donorName" name="donor_name" required maxlength="100" style="width:100%;padding:.75rem;border:1px solid var(--border-gold);border-radius:8px;">
+          </div>
+          <div>
+            <label for="donorPhone" style="font-weight:700;display:block;margin-bottom:.4rem;">Mobile number *</label>
+            <input id="donorPhone" name="phone" type="tel" required maxlength="20" style="width:100%;padding:.75rem;border:1px solid var(--border-gold);border-radius:8px;">
+          </div>
+          <div>
+            <label for="donorEmail" style="font-weight:700;display:block;margin-bottom:.4rem;">Email</label>
+            <input id="donorEmail" name="email" type="email" maxlength="100" style="width:100%;padding:.75rem;border:1px solid var(--border-gold);border-radius:8px;">
+          </div>
+          <div>
+            <label for="amount" style="font-weight:700;display:block;margin-bottom:.4rem;">Amount transferred (₹) *</label>
+            <input id="amount" name="amount" type="number" min="1" step="0.01" required style="width:100%;padding:.75rem;border:1px solid var(--border-gold);border-radius:8px;">
+          </div>
+          <div>
+            <label for="transactionRef" style="font-weight:700;display:block;margin-bottom:.4rem;">Transaction reference / UTR *</label>
+            <input id="transactionRef" name="transaction_ref" required maxlength="100" style="width:100%;padding:.75rem;border:1px solid var(--border-gold);border-radius:8px;">
+          </div>
+          <div>
+            <label for="paymentReceipt" style="font-weight:700;display:block;margin-bottom:.4rem;">Payment receipt *</label>
+            <input id="paymentReceipt" name="payment_receipt" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf" required style="width:100%;padding:.62rem;border:1px solid var(--border-gold);border-radius:8px;background:#fff;">
+          </div>
+        </div>
+        <p style="color:var(--text-muted);font-size:.9rem;margin:1rem 0 0;">Accepted files: JPG, PNG, WEBP or PDF. Maximum size: 10 MB.</p>
+        <button class="btn btn-primary" type="submit" style="margin-top:1rem;"><i class="fa-solid fa-upload"></i> Upload receipt</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% include 'partials/footer.html' %}

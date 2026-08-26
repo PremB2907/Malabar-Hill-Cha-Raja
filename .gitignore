@@ -6,3 +6,11 @@ logs/*
 receipts/*
 !.gitkeep
 .DS_Store
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Google Sheets
+credentials.json
