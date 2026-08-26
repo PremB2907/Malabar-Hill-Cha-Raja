@@ -685,6 +685,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================================================
+  // SCROLLYTELLING ANIMATION SYSTEM (Intersection Observer)
+  // ==========================================================================
+  const targetSelectors = [
+    '.card-temple',
+    '.committee-card',
+    '.release-countdown',
+    '.release-image-frame',
+    '.release-map',
+    '.release-facts div',
+    '.release-gallery-item',
+    '.about-card',
+    '.stat-box',
+    '.timings-grid .time-card',
+    '.contact-info-card',
+    '.contact-form-container'
+  ];
+  
+  targetSelectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => {
+      el.classList.add('scroll-reveal');
+    });
+  });
+
+  const revealElements = document.querySelectorAll('.scroll-reveal');
+  
+  if (revealElements.length > 0) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('scroll-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.05,
+      rootMargin: '0px 0px -30px 0px'
+    });
+    
+    revealElements.forEach((el) => {
+      revealObserver.observe(el);
+    });
+  }
+
 });
 
 
